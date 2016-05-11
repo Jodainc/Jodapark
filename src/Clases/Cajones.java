@@ -28,6 +28,7 @@ public class Cajones {
     }
     
     public Cajones(int Numero){   //este método recibe como parametro el número de cajón y te retorna todos los datos asociados
+        int cont=0;
         conexion = base.GetConnection();
         PreparedStatement select;
         try {
