@@ -167,10 +167,16 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JOptionPane.showMessageDialog(null,"-Si va a añadir un nuevo usuario rellene todos los campos\n"
+        
+        
+        new Update_user().setVisible(true);
+       this.dispose();        
+        /* JOptionPane.showMessageDialog(null,"-Si va a añadir un nuevo usuario rellene todos los campos\n"
                 + "-Si va a modificar un registro Tiene que llenar el campo de Nombre por el que desee modificar\n"
                 + "asi como los campos a modificar.\n-Si va a eliminar un registro Solo rellene el Nombre del registro a eliminar.\n\n"
-                + " Cualquier duda consulte al administrador.","información",1);        // TODO add your handling code here:
+                + " Cualquier duda consulte al administrador.","información",1);   
+        */
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
                     //creamos un nuevo usuario a partir de los datos que estén en los campos de texto.
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

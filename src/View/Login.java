@@ -159,7 +159,7 @@ public class Login extends javax.swing.JFrame {
             String  passoriginal= usu.getCostraseña();
             String  pass= new String(cmpContraseña.getPassword());
             System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
-            if(pass.equals("Joda10")){      //tipico ciclo de verificación de contraseña y usuario.
+            if(pass.equals(passoriginal)){      //tipico ciclo de verificación de contraseña y usuario.
                 //JOptionPane.showMessageDialog(null, "Exito", "sucess",2);
                 new menu().setVisible(true);
                 this.dispose();
