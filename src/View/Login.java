@@ -33,123 +33,82 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        cmpContraseña = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        cmpusuario = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
+        cmpusuario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        cmpContraseña = new javax.swing.JPasswordField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setEnabled(false);
+        jButton2.setOpaque(false);
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 60, 30));
 
-        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 18)); // NOI18N
-        jLabel1.setText("Ingreso de personal");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Contraseña:");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Usuario: ");
-
-        jButton2.setText("Cancelar");
-
-        jButton1.setText("Ingresar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/In.png"))); // NOI18N
+        jButton1.setToolTipText("");
+        jButton1.setOpaque(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 440, 250, 50));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/settings-128.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Opcion.png"))); // NOI18N
+        jButton4.setBorder(null);
+        jButton4.setContentAreaFilled(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 550, 140, 70));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Ajustes");
-
-        cmpusuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                cmpusuarioFocusGained(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)))
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(cmpContraseña)
-                            .addComponent(cmpusuario)))
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(cmpusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmpContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/close-128.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 30, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 40, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/template_ventana_login_2.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 470, 470));
+        cmpusuario.setBackground(new java.awt.Color(204, 204, 204));
+        cmpusuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cmpusuarioFocusGained(evt);
+            }
+        });
+        getContentPane().add(cmpusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 250, 50));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/usr.png"))); // NOI18N
+        jLabel2.setText("Usuario: ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 310, 50));
+
+        cmpContraseña.setBackground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(cmpContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 230, 50));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Pass.png"))); // NOI18N
+        jLabel3.setText("Contraseña:");
+        jLabel3.setToolTipText("");
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 360, 300, 50));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Login.png"))); // NOI18N
+        jLabel5.setToolTipText("");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,42 +140,42 @@ public class Login extends javax.swing.JFrame {
         reproductor.start();
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try{    
-        usuarios usu = new usuarios(this.cmpusuario.getText());
-            String  passoriginal= usu.getCostraseña();
-            String  pass= new String(cmpContraseña.getPassword());
-                    System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
-        if(pass.equals("Joda10")){      //tipico ciclo de verificación de contraseña y usuario.
-                //JOptionPane.showMessageDialog(null, "Exito", "sucess",2);
-                 new menu().setVisible(true);
-                   this.dispose();
-                            System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
-            }
-            else{
-            reproducir_error();      
-            JOptionPane.showMessageDialog(null, "Datos Incorrectos", "Acceso denagado",2);
-            //ojo que si pones la contraseña bien pero el user no tambien marca error ;)
-            }  
-       }
-        catch(Exception ex){
-            ex.getMessage();
-        }
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        System.exit(0);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cmpusuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmpusuarioFocusGained
+        reproducir_1();        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpusuarioFocusGained
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         new alta_usuario().setVisible(true);
         this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        System.exit(0);        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void cmpusuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmpusuarioFocusGained
-            reproducir_1();        // TODO add your handling code here:
-    }//GEN-LAST:event_cmpusuarioFocusGained
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            usuarios usu = new usuarios(this.cmpusuario.getText());
+            String  passoriginal= usu.getCostraseña();
+            String  pass= new String(cmpContraseña.getPassword());
+            System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
+            if(pass.equals("Joda10")){      //tipico ciclo de verificación de contraseña y usuario.
+                //JOptionPane.showMessageDialog(null, "Exito", "sucess",2);
+                new menu().setVisible(true);
+                this.dispose();
+                System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
+            }
+            else{
+                reproducir_error();
+                JOptionPane.showMessageDialog(null, "Datos Incorrectos", "Acceso denagado",2);
+                //ojo que si pones la contraseña bien pero el user no tambien marca error ;)
+        }
+        }
+        catch(Exception ex){
+            ex.getMessage();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,11 +218,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
