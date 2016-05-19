@@ -77,32 +77,26 @@ int L;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         combocajon = new javax.swing.JComboBox();
         cmpTiempo = new javax.swing.JTextField();
         cmpPago = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         cmpTipo = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         cmpBusqueda = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel1.setText("Buscar por propietario");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,6 +106,7 @@ int L;
 
             }
         ));
+        tabla1.setOpaque(false);
         tabla1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tabla1MouseReleased(evt);
@@ -119,33 +114,19 @@ int L;
         });
         jScrollPane1.setViewportView(tabla1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 531, 88));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 660, 130));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/mapa.gif"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/butmapa.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 50, 41));
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel3.setText("Cajón:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel4.setText("Tiempo en parqueo");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel5.setText("Total a pagar");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel6.setText("Tipo de pago");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, 20));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 380, -1));
 
         combocajon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione...", " " }));
+        combocajon.setBorder(null);
+        combocajon.setOpaque(false);
         combocajon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 combocajonMouseClicked(evt);
@@ -164,7 +145,7 @@ int L;
                 combocajonActionPerformed(evt);
             }
         });
-        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 111, -1));
+        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 362, 640, 30));
 
         cmpTiempo.setText("determinado");
         cmpTiempo.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +153,7 @@ int L;
                 cmpTiempoActionPerformed(evt);
             }
         });
-        getContentPane().add(cmpTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, 71, -1));
+        getContentPane().add(cmpTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 410, 638, 35));
 
         cmpPago.setText("Calculada");
         cmpPago.addActionListener(new java.awt.event.ActionListener() {
@@ -180,48 +161,62 @@ int L;
                 cmpPagoActionPerformed(evt);
             }
         });
-        getContentPane().add(cmpPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 69, -1));
-        getContentPane().add(cmpTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, 110, -1));
+        getContentPane().add(cmpPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 463, 600, 35));
 
-        jButton3.setText("Cobrar");
+        jLabel3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labecajon.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 680, -1));
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labetparque.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 670, -1));
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labetpagar.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 450, 670, -1));
+        getContentPane().add(cmpTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 518, 640, 32));
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labetpago.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 670, 50));
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bucobrar.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, 100, 40));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 560, 250, 30));
 
-        jButton4.setText("Cancelar");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/buback.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 450, 110, 40));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 30));
 
         cmpBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 cmpBusquedaKeyReleased(evt);
             }
         });
-        getContentPane().add(cmpBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 205, -1));
+        getContentPane().add(cmpBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(255, 53, 400, 20));
 
         jLabel7.setText("Horas");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 410, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jLabel8.setText("Buscar en mapa");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
-
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/close.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
+        jButton6.setBorder(null);
+        jButton6.setOpaque(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 30, 30));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 30, 30));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/template_ventana_menu.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/backSal.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 700, 610));
 
         pack();
@@ -434,14 +429,12 @@ int L;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables

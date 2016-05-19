@@ -36,16 +36,16 @@ public class menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox();
+        jButton7 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -53,89 +53,80 @@ public class menu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 80, -1));
+
         jButton1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/parking.gif"))); // NOI18N
-        jButton1.setText("Aparcar Vehículo");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bentra.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 200, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 190, 83));
 
         jButton2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/retiro.png"))); // NOI18N
-        jButton2.setText("Retirar Vehículo");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bsalida.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 200, 70));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 167, 83));
 
         jButton3.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/mapa.gif"))); // NOI18N
-        jButton3.setText("Mapa del Estacionamiento");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bMapa.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 260, 70));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 270, 83));
 
         jButton4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/icopedf.png"))); // NOI18N
-        jButton4.setText("Reportes");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bRepor.png"))); // NOI18N
+        jButton4.setPreferredSize(new java.awt.Dimension(219, 100));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 160, 70));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 380, 186, 83));
 
         jButton6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/camara_1.png"))); // NOI18N
-        jButton6.setText("Vigilancia");
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bVigilancia.png"))); // NOI18N
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, 160, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 192, 83));
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bValores.png"))); // NOI18N
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 226, 83));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/logo_chico.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 340, 110));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 340, 80));
 
-        jLabel3.setText("Estacionamiento_t3ch build 1.3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, -1, -1));
+        jLabel3.setText("JodaPar");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, -1, -1));
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/close.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
+        jButton5.setBorder(null);
         jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 30, 30));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 0, 30, 30));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/eye.jpg"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jLabel4MouseReleased(evt);
-            }
-        });
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 180, 280));
-
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/companioncube2.gif"))); // NOI18N
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 50, 50));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/template_ventana_menu.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 690, 600));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/BackMen.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,16 +200,6 @@ public class menu extends javax.swing.JFrame {
          
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jLabel4MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseReleased
-                                reproducir_2();        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseReleased
-
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-                         
-        reproducir_portalsong();    
-        this.jToggleButton1.setVisible(false);// TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -260,11 +241,11 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

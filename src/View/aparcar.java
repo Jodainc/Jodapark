@@ -6,6 +6,7 @@ package View;
 
 import Model.Cajones;
 import Model.Clientes;
+import java.awt.Color;
 import java.awt.Font;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -21,6 +22,7 @@ int L;   //variables y objeto calendar.
 boolean f=true;
 private Reloj.Hora hora;
 Calendar re=Calendar.getInstance();
+
 //Cajones cajon = new Cajones();
     /**
      * Creates new form aparcar
@@ -32,7 +34,8 @@ Calendar re=Calendar.getInstance();
         L=1;
         this.combocajon.setModel(modelo);   //aplicamos el modelo al combobox
         hora= new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
-        hora.setBounds(50, 50, 150, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
+                hora.setForeground(Color.red);
+        hora.setBounds(120, 1, 150, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
         hora.setFont(new Font("Trebuchet MS",java.awt.Font.BOLD, 20));/*Cambiamos la fuente, estilo y tamaño*/
         this.panel.add(hora);
        System.out.println(re.get(Calendar.HOUR)+": "+re.get(Calendar.MINUTE)+": "+re.get(Calendar.SECOND));
@@ -63,20 +66,21 @@ Calendar re=Calendar.getInstance();
 
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         cmpPlaca = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         cmpCliente = new javax.swing.JTextField();
+        cmpCorreo = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         cmpMarca_modelo = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         combocajon = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        cmpCorreo = new javax.swing.JTextField();
         btnlisto = new javax.swing.JButton();
         panel = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
@@ -87,74 +91,105 @@ Calendar re=Calendar.getInstance();
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(460, 480));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Placa de vehículo");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jLabel8.setText("Ganacias ");
+        jLabel8.setToolTipText("Ganancias \nOptimas");
+        jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, 50));
 
-        jLabel2.setText("Propietario");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        jLabel5.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(102, 204, 255));
+        jLabel5.setText("45%");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 110, 50));
 
-        jLabel3.setText("Marca y modelo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        cmpPlaca.setBorder(null);
+        cmpPlaca.setOpaque(false);
+        cmpPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpPlacaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 217, 313, 25));
 
-        jLabel4.setText("Cajón autilizar");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
-        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 157, -1));
-        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 157, -1));
-        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 156, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/placalabe.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
+        cmpCliente.setBorder(null);
+        cmpCliente.setOpaque(false);
+        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 260, 310, 30));
+
+        cmpCorreo.setBorder(null);
+        cmpCorreo.setOpaque(false);
+        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 305, 310, 26));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labepropietario.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 450, -1));
+
+        cmpMarca_modelo.setBorder(null);
+        cmpMarca_modelo.setOpaque(false);
+        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 350, 315, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labemod.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 450, 50));
+
+        combocajon.setOpaque(false);
         combocajon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combocajonActionPerformed(evt);
             }
         });
-        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 156, -1));
+        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 310, -1));
 
-        jButton1.setText("Regresar");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labelug.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 450, -1));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 380, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 20));
 
-        jLabel7.setText("Correo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
-        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 156, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labecel.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, -1));
 
-        btnlisto.setText("Listo");
+        btnlisto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bRegis.png"))); // NOI18N
+        btnlisto.setBorder(null);
+        btnlisto.setFocusable(false);
         btnlisto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnlistoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, -1));
+        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
 
-        panel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Reloj");
+        panel.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setFocusable(false);
+        panel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        panel.setOpaque(false);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel5)
-                .addContainerGap(160, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(0, 84, Short.MAX_VALUE))
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 230, 110));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 30));
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/close.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
+        jButton3.setBorder(null);
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -162,8 +197,10 @@ Calendar re=Calendar.getInstance();
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 30, 30));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/template_ventana_login_2.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 470, 480));
+        jLabel6.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 204, 255));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/backRegis.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 470));
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
@@ -201,6 +238,10 @@ Calendar re=Calendar.getInstance();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
             System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cmpPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlacaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmpPlacaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,6 +296,7 @@ Calendar re=Calendar.getInstance();
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
