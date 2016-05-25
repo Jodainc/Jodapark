@@ -21,7 +21,7 @@ public class Clientes {
     DB base= new DB();  //instanciamos nuestra clase de base de datos
     public static Connection conexion;   //hacemos la conexión con ayuda de la clase DB
     int Cajon_Numero;
-    String Placa, Nombre, Correo, Marca_modelo;  //declaramos variables
+    String Placa, Nombre, Correo, Marca_modelo,Obser;  //declaramos variables
     Double Llegada;
     
     public Clientes(){  //constructor default
@@ -31,6 +31,7 @@ public class Clientes {
         this.Correo="";
         this.Marca_modelo="";
         this.Llegada=0.0;
+        this.Obser="";
     }
     
     public Clientes(String Nombre){  //método que retorna atributos asociados con el nombre que recibamos
@@ -84,13 +85,15 @@ public class Clientes {
     }
     
       //constructor
-    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, double Llegada){
+    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, double Llegada,String Obser){
         this.Placa=Placa;
         this.Nombre=Nombre;
         this.Correo=Correo;
         this.Marca_modelo=Marca_modelo;
         this.Cajon_Numero=Cajon_Numero;
         this.Llegada=Llegada;
+        this.Obser=Obser;
+        
     }
 // gets and sets
     public int getCajon_Numero() {
@@ -140,7 +143,13 @@ public class Clientes {
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
     }
-    
+    public String getObser() {
+        return Nombre;
+    }
+
+    public void setObser(String Obser) {
+        this.Nombre = Obser;
+    }
     
     
     
@@ -149,13 +158,14 @@ public class Clientes {
         
         try {
             conexion= base.GetConnection();
-            PreparedStatement insertar= conexion.prepareStatement("insert into cliente (Placa,Nombre,Correo,Marca_modelo,Cajon_Numero,Llegada) values(?,?,?,?,?,?) ");
+            PreparedStatement insertar= conexion.prepareStatement("insert into cliente (Placa,Nombre,Correo,Marca_modelo,Cajon_Numero,Llegada,Observacion) values(?,?,?,?,?,?,?) ");
             insertar.setString(1, Placa);
             insertar.setString(2,Nombre);
             insertar.setString(3, Correo);
             insertar.setString(4,Marca_modelo);
             insertar.setInt(5,Cajon_Numero);
             insertar.setDouble(6, Llegada);
+            insertar.setString(7,Obser);
             insertar.executeUpdate();
             conexion.close();
              JOptionPane.showMessageDialog(null,"Guardado!", "Éxito al Guardar",1);

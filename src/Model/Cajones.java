@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 package Model;
-
+import static Model.usuarios.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,6 +50,33 @@ public class Cajones {
             System.err.println("Ocurrió un error: "+ex.getMessage().toString());
         }
     }
+    public int ConsultaCajon(int numero){
+         int numero2=5;
+        conexion = base.GetConnection();
+        PreparedStatement select;
+        try{
+            select = conexion.prepareStatement("select Numero from cajon where Numero= '"+numero+"' ");
+             boolean consulta = select.execute();
+            if(consulta){
+                ResultSet resultado =  select.getResultSet();
+                if(resultado.next()){
+                    if(numero==resultado.getInt(1)){
+                                            numero2 =resultado.getInt(1);
+                    }
+                resultado.close();
+                }else{
+                    numero2=0;
+                }
+            
+            }
+            conexion.close();
+             
+        }catch (SQLException ex){
+            System.out.println("ocurrio un error Consulta Cajon()"+ ex.getMessage().toString());
+        }
+        
+        
+    return numero2;}
     
     public Cajones(int Numero, int Estado){  //el constructor
         this.Numero=Numero;
@@ -72,6 +99,24 @@ public class Cajones {
         this.Estado = Estado;
     }
     
+        public boolean Guardar(){  //guarda el cajon   actual apuntado en el constructor
+        
+        try {
+            conexion= base.GetConnection();
+            PreparedStatement insertar= conexion.prepareStatement("insert into cajon (Numero,Estado) values(?,?) ");
+            insertar.setInt(1, this.Numero);
+            insertar.setInt(2,1);
+            insertar.executeUpdate();
+            conexion.close();
+             JOptionPane.showMessageDialog(null,"Guardado!", "Éxito al Guardar",1);
+            return true;
+           
+         } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Problema al insertar"+ex.getMessage(),"error",1);
+            return false;
+        }
+        
+    }
         public boolean actualizar(){  //aqui actualizamos los datos para el cajón actual, osea el enviado en constructor
         conexion=base.GetConnection();
         if(conexion!=null){

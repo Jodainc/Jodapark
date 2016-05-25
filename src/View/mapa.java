@@ -345,7 +345,7 @@ public class mapa extends javax.swing.JFrame {
          while (L<12){
             Cajones cajon= new Cajones(L);
          //   System.out.println(cajon.getEstado());
-          if(cajon.getEstado()==1){
+          if(cajon.getEstado()==2){
          if(L==1){
              this.carro_1.setVisible(false);
              

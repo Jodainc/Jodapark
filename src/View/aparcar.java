@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +32,7 @@ Calendar re=Calendar.getInstance();
         this.setUndecorated(true);
         this.setLocation(400, 100);
         initComponents();
-        L=1;
+        L=0;
         this.combocajon.setModel(modelo);   //aplicamos el modelo al combobox
         hora= new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
                 hora.setForeground(Color.red);
@@ -42,16 +43,16 @@ Calendar re=Calendar.getInstance();
         System.out.println(L); 
        while (L<12){           //llenamos el combobox con los cajones disponibles.
             Cajones cajon= new Cajones(L);
-          if(cajon.getEstado()==0){
-              System.out.println(cajon.getEstado()+"estrados");
-          Object caj= cajon.getNumero();
-              System.out.println("estoes"+caj+"" );
+            //System.out.println(cajon+"Cajones");
+          if(cajon.ConsultaCajon(L)!= L && cajon.getEstado()==0){
+         // Object caj= cajon.getNumero();
+          Object caj= L;
           modelo.addElement(caj);
           L++;
         }
           else{
               L++;
-          }         
+          }        
         }  
     }
 
@@ -82,9 +83,11 @@ Calendar re=Calendar.getInstance();
         btnlisto = new javax.swing.JButton();
         panel = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        cmp_observacion = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         jTextField2.setText("jTextField2");
 
@@ -100,7 +103,7 @@ Calendar re=Calendar.getInstance();
         jLabel8.setText("Ganacias ");
         jLabel8.setToolTipText("Ganancias \nOptimas");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, 50));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 204, 255));
@@ -167,7 +170,7 @@ Calendar re=Calendar.getInstance();
                 btnlistoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, -1, -1));
+        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
 
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setFocusable(false);
@@ -189,7 +192,6 @@ Calendar re=Calendar.getInstance();
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -197,16 +199,21 @@ Calendar re=Calendar.getInstance();
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 30, 30));
 
+        cmp_observacion.setColumns(20);
+        cmp_observacion.setRows(5);
+        getContentPane().add(cmp_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 310, 30));
+
         jLabel6.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 204, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/backRegis.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 470));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 520));
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jButton5.setText("jButton5");
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 370, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,10 +232,20 @@ Calendar re=Calendar.getInstance();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnlistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistoActionPerformed
-            Clientes cliente= new Clientes(this.cmpPlaca.getText(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo());  
+            Clientes cliente= new Clientes(this.cmpPlaca.getText(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText());  
             Cajones cajon= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
-            cliente.Guardar();
-            cajon.actualizar();  //creamos cliente y actualizamos cajones
+            Cajones cajon1= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()),0);
+            Cajones cajoncons= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
+           if(this.cmpPlaca.getText().length()==0 && this.cmpCliente.getText().length()==0 && this.cmpMarca_modelo.getText().length()==0 && this.cmp_observacion.getText().length()==0  ){
+                  JOptionPane.showMessageDialog(null,"Falta informacion por llenar!", "Llenar informacion Faltante",1); 
+            }else{
+                 if(cajoncons.ConsultaCajon(Integer.parseInt(this.combocajon.getSelectedItem().toString()))==0){
+               cajon1.Guardar();
+               cliente.Guardar();
+                 }
+           }
+      
+              //creamos cliente y actualizamos cajones
     }//GEN-LAST:event_btnlistoActionPerformed
 
     private void combocajonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocajonActionPerformed
@@ -283,6 +300,7 @@ Calendar re=Calendar.getInstance();
     private javax.swing.JTextField cmpCorreo;
     private javax.swing.JTextField cmpMarca_modelo;
     private javax.swing.JTextField cmpPlaca;
+    private javax.swing.JTextArea cmp_observacion;
     private javax.swing.JComboBox combocajon;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -297,6 +315,7 @@ Calendar re=Calendar.getInstance();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
