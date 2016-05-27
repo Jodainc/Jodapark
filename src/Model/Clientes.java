@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class Clientes {
     DB base= new DB();  //instanciamos nuestra clase de base de datos
     public static Connection conexion;   //hacemos la conexión con ayuda de la clase DB
-    int Cajon_Numero;
+    int Cajon_Numero,Tipove;
     String Placa, Nombre, Correo, Marca_modelo,Obser;  //declaramos variables
     Double Llegada;
     
@@ -32,6 +32,7 @@ public class Clientes {
         this.Marca_modelo="";
         this.Llegada=0.0;
         this.Obser="";
+        this.Tipove=0;
     }
     
     public Clientes(String Nombre){  //método que retorna atributos asociados con el nombre que recibamos
@@ -85,7 +86,7 @@ public class Clientes {
     }
     
       //constructor
-    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, double Llegada,String Obser){
+    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, double Llegada,String Obser,int Tipove){
         this.Placa=Placa;
         this.Nombre=Nombre;
         this.Correo=Correo;
@@ -93,6 +94,7 @@ public class Clientes {
         this.Cajon_Numero=Cajon_Numero;
         this.Llegada=Llegada;
         this.Obser=Obser;
+        this.Tipove=Tipove;
         
     }
 // gets and sets
@@ -150,6 +152,13 @@ public class Clientes {
     public void setObser(String Obser) {
         this.Nombre = Obser;
     }
+     public int getTipove() {
+        return Tipove;
+    }
+
+    public void setTipove(int Tipove) {
+        this.Tipove = Tipove;
+    }
     
     
     
@@ -158,7 +167,7 @@ public class Clientes {
         
         try {
             conexion= base.GetConnection();
-            PreparedStatement insertar= conexion.prepareStatement("insert into cliente (Placa,Nombre,Correo,Marca_modelo,Cajon_Numero,Llegada,Observacion) values(?,?,?,?,?,?,?) ");
+            PreparedStatement insertar= conexion.prepareStatement("insert into cliente (Placa,Nombre,Correo,Marca_modelo,Cajon_Numero,Llegada,Observacion,TipoVehi) values(?,?,?,?,?,?,?,?) ");
             insertar.setString(1, Placa);
             insertar.setString(2,Nombre);
             insertar.setString(3, Correo);
@@ -166,6 +175,7 @@ public class Clientes {
             insertar.setInt(5,Cajon_Numero);
             insertar.setDouble(6, Llegada);
             insertar.setString(7,Obser);
+              insertar.setInt(8,Tipove);
             insertar.executeUpdate();
             conexion.close();
              JOptionPane.showMessageDialog(null,"Guardado!", "Éxito al Guardar",1);

@@ -5,10 +5,10 @@
 package View;
 
 import Model.Cajones;
+import Model.Datos;
 import Model.Clientes;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -18,11 +18,13 @@ import javax.swing.JOptionPane;
  * @author JODA
  */
 public class aparcar extends javax.swing.JFrame {
-DefaultComboBoxModel modelo =new DefaultComboBoxModel (); //creamos el modelo del combobox
-int L;   //variables y objeto calendar.
-boolean f=true;
-private Reloj.Hora hora;
-Calendar re=Calendar.getInstance();
+
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel(); //creamos el modelo del combobox
+    int L;   //variables y objeto calendar.
+    boolean f = true;
+    private Reloj.Hora hora;
+    Calendar re = Calendar.getInstance();
+         int claseAut=0;
 
 //Cajones cajon = new Cajones();
     /**
@@ -30,30 +32,29 @@ Calendar re=Calendar.getInstance();
      */
     public aparcar() {  //establecemos propiedades a la ventana, quitamos decoración...
         this.setUndecorated(true);
-        this.setLocation(400, 100);
+        this.setLocation(400, 50);
         initComponents();
-        L=0;
+        L = 0;
         this.combocajon.setModel(modelo);   //aplicamos el modelo al combobox
-        hora= new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
-                hora.setForeground(Color.red);
+        hora = new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
+        hora.setForeground(Color.red);
         hora.setBounds(120, 1, 150, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
-        hora.setFont(new Font("Trebuchet MS",java.awt.Font.BOLD, 20));/*Cambiamos la fuente, estilo y tamaño*/
+        hora.setFont(new Font("Trebuchet MS", java.awt.Font.BOLD, 20));/*Cambiamos la fuente, estilo y tamaño*/
         this.panel.add(hora);
-       System.out.println(re.get(Calendar.HOUR)+": "+re.get(Calendar.MINUTE)+": "+re.get(Calendar.SECOND));
-        System.out.println(L); 
-       while (L<12){           //llenamos el combobox con los cajones disponibles.
-            Cajones cajon= new Cajones(L);
+        System.out.println(re.get(Calendar.HOUR) + ": " + re.get(Calendar.MINUTE) + ": " + re.get(Calendar.SECOND));
+        System.out.println(L);
+        while (L < 12) {           //llenamos el combobox con los cajones disponibles.
+            Cajones cajon = new Cajones(L);
             //System.out.println(cajon+"Cajones");
-          if(cajon.ConsultaCajon(L)!= L && cajon.getEstado()==0){
-         // Object caj= cajon.getNumero();
-          Object caj= L;
-          modelo.addElement(caj);
-          L++;
+            if (cajon.ConsultaCajon(L) != L && cajon.getEstado() == 0) {
+                // Object caj= cajon.getNumero();
+                Object caj = L;
+                modelo.addElement(caj);
+                L++;
+            } else {
+                L++;
+            }
         }
-          else{
-              L++;
-          }        
-        }  
     }
 
     /**
@@ -65,11 +66,13 @@ Calendar re=Calendar.getInstance();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        claseAuto = new javax.swing.JSlider();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        cmpLetters = new javax.swing.JTextField();
         cmpPlaca = new javax.swing.JTextField();
+        cpmNumbers = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         cmpCliente = new javax.swing.JTextField();
         cmpCorreo = new javax.swing.JTextField();
@@ -81,21 +84,35 @@ Calendar re=Calendar.getInstance();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         btnlisto = new javax.swing.JButton();
-        panel = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
         cmp_observacion = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
 
-        jTextField2.setText("jTextField2");
-
-        jButton2.setText("jButton2");
+        jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(460, 480));
+        setMaximumSize(new java.awt.Dimension(456, 640));
+        setMinimumSize(new java.awt.Dimension(456, 640));
+        setPreferredSize(new java.awt.Dimension(456, 640));
+        setSize(new java.awt.Dimension(456, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        claseAuto.setForeground(new java.awt.Color(28, 189, 235));
+        claseAuto.setMajorTickSpacing(5);
+        claseAuto.setMaximum(5);
+        claseAuto.setMinimum(1);
+        claseAuto.setMinorTickSpacing(1);
+        claseAuto.setPaintLabels(true);
+        claseAuto.setValue(1);
+        claseAuto.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                claseAutoStateChanged(evt);
+            }
+        });
+        getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 350, 60));
 
         jLabel8.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 204, 255));
@@ -103,12 +120,36 @@ Calendar re=Calendar.getInstance();
         jLabel8.setText("Ganacias ");
         jLabel8.setToolTipText("Ganancias \nOptimas");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, 50));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 204, 255));
         jLabel5.setText("45%");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 110, 50));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, 50));
+
+        cmpLetters.setFont(new java.awt.Font("DejaVu Sans", 3, 24));
+        cmpLetters.setBorder(null);
+        cmpLetters.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cmpLettersMouseMoved(evt);
+            }
+        });
+        cmpLetters.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmpLettersMouseClicked(evt);
+            }
+        });
+        cmpLetters.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpLettersActionPerformed(evt);
+            }
+        });
+        cmpLetters.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                cmpLettersPropertyChange(evt);
+            }
+        });
+        getContentPane().add(cmpLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 60, 30));
 
         cmpPlaca.setBorder(null);
         cmpPlaca.setOpaque(false);
@@ -117,28 +158,32 @@ Calendar re=Calendar.getInstance();
                 cmpPlacaActionPerformed(evt);
             }
         });
-        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 217, 313, 25));
+        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 120, 25));
+
+        cpmNumbers.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        cpmNumbers.setBorder(null);
+        getContentPane().add(cpmNumbers, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 60, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/placalabe.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
 
         cmpCliente.setBorder(null);
         cmpCliente.setOpaque(false);
-        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 260, 310, 30));
+        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 310, 30));
 
         cmpCorreo.setBorder(null);
         cmpCorreo.setOpaque(false);
-        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 305, 310, 26));
+        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 310, 26));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labepropietario.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 450, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, -1));
 
         cmpMarca_modelo.setBorder(null);
         cmpMarca_modelo.setOpaque(false);
-        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 350, 315, 30));
+        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 315, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labemod.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 450, 50));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 450, 50));
 
         combocajon.setOpaque(false);
         combocajon.addActionListener(new java.awt.event.ActionListener() {
@@ -146,10 +191,10 @@ Calendar re=Calendar.getInstance();
                 combocajonActionPerformed(evt);
             }
         });
-        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 310, -1));
+        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 310, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labelug.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 450, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 450, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -157,10 +202,10 @@ Calendar re=Calendar.getInstance();
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 20));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 40, 20));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labecel.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 450, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 450, -1));
 
         btnlisto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bRegis.png"))); // NOI18N
         btnlisto.setBorder(null);
@@ -170,25 +215,7 @@ Calendar re=Calendar.getInstance();
                 btnlistoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, -1, -1));
-
-        panel.setForeground(new java.awt.Color(255, 255, 255));
-        panel.setFocusable(false);
-        panel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
-        panel.setOpaque(false);
-
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 30));
+        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 440, -1));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
         jButton3.setBorder(null);
@@ -199,41 +226,84 @@ Calendar re=Calendar.getInstance();
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 30, 30));
 
+        panel.setForeground(new java.awt.Color(255, 255, 255));
+        panel.setFocusable(false);
+        panel.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
+        panel.setOpaque(false);
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 30));
+
         cmp_observacion.setColumns(20);
         cmp_observacion.setRows(5);
-        getContentPane().add(cmp_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 310, 30));
+        getContentPane().add(cmp_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 310, 60));
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 204, 255));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/backRegis.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 520));
+        jLabel6.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jLabel6ComponentAdded(evt);
+            }
+        });
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 580));
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jButton5.setText("jButton5");
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, -1, -1));
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 370, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private double tiempo(){//retornamos el tiempo actual.
-        int hora=re.get(Calendar.HOUR);
-        double minuto=re.get(Calendar.MINUTE)/100.000;
-        double tiempo= hora+minuto;
-        System.out.println("Hora: "+hora+"     minuto: "+minuto+"      tiempo: "+tiempo);
+    private double tiempo() {//retornamos el tiempo actual.
+        int hora = re.get(Calendar.HOUR);
+        double minuto = re.get(Calendar.MINUTE) / 100.000;
+        double tiempo = hora + minuto;
+        System.out.println("Hora: " + hora + "     minuto: " + minuto + "      tiempo: " + tiempo);
         return tiempo;
     }
-    
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new menu().setVisible(true);
         System.out.println(L);
-            this.dispose();      // TODO add your handling code here:
+        this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnlistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlistoActionPerformed
-            Clientes cliente= new Clientes(this.cmpPlaca.getText(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText());  
-            Cajones cajon= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
+        StringBuilder letrasPla = new StringBuilder(cmpLetters.getText());
+        StringBuilder numberPla = new StringBuilder(cpmNumbers.getText());
+        StringBuilder Placa = new StringBuilder(cpmNumbers.getText());
+        Datos revDatos = new Datos();
+        Placa = revDatos.Placa(letrasPla, numberPla);
+        if(Placa.length()<6){
+                JOptionPane.showMessageDialog(rootPane, "No se puede continuar"+ claseAut);
+        }else{
+                    Clientes cliente= new Clientes(Placa.toString(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText(),claseAut);  
+                    Cajones cajon1= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()),0,claseAut);
+                    Cajones cajoncons= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
+                    if(this.cmpLetters.getText().length()==0 || this.cmpCliente.getText().length()==0 || this.cmpMarca_modelo.getText().length()==0 || this.cmp_observacion.getText().length()==0 || this.cmpCorreo.getText().length()==0  ){
+                    JOptionPane.showMessageDialog(null,"Falta informacion por llenar!", "Llenar informacion Faltante",1); 
+                    }else{
+                    if(cajoncons.ConsultaCajon(Integer.parseInt(this.combocajon.getSelectedItem().toString()))==0){
+                    cajon1.Guardar();
+                    cliente.Guardar();
+                    }
+                    }
+        }
+    
+
+        /*Clientes cliente= new Clientes(this.cmpPlaca.getText(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText());  
             Cajones cajon1= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()),0);
             Cajones cajoncons= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
            if(this.cmpPlaca.getText().length()==0 && this.cmpCliente.getText().length()==0 && this.cmpMarca_modelo.getText().length()==0 && this.cmp_observacion.getText().length()==0  ){
@@ -245,7 +315,8 @@ Calendar re=Calendar.getInstance();
                  }
            }
       
-              //creamos cliente y actualizamos cajones
+         */
+        //creamos cliente y actualizamos cajones
     }//GEN-LAST:event_btnlistoActionPerformed
 
     private void combocajonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocajonActionPerformed
@@ -253,17 +324,86 @@ Calendar re=Calendar.getInstance();
     }//GEN-LAST:event_combocajonActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            System.exit(0);        // TODO add your handling code here:
+        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cmpPlacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPlacaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmpPlacaActionPerformed
 
+    private void jLabel6ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jLabel6ComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel6ComponentAdded
+
+    private void claseAutoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_claseAutoStateChanged
+        // TODO add your handling code here:
+                        Datos datoscli = new Datos();
+     claseAut = (int)claseAuto.getValue();
+       switch(claseAut){ case 0:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+           
+            case 1:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+            case 2:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+                     case 3:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+                                     case 4:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+                                     case 5:
+                cmpLetters.setText("");
+                cpmNumbers.setText("");
+                datoscli.isCaden(cmpLetters, 2);
+                datoscli.isProbar(cpmNumbers, 2);
+                break;
+        }
+
+    }//GEN-LAST:event_claseAutoStateChanged
+
+    private void cmpLettersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpLettersActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmpLettersActionPerformed
+
+    private void cmpLettersPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cmpLettersPropertyChange
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmpLettersPropertyChange
+
+    private void cmpLettersMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpLettersMouseMoved
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_cmpLettersMouseMoved
+
+    private void cmpLettersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmpLettersMouseClicked
+        // TODO add your handling code here
+      
+    }//GEN-LAST:event_cmpLettersMouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -296,14 +436,16 @@ Calendar re=Calendar.getInstance();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlisto;
+    private javax.swing.JSlider claseAuto;
     private javax.swing.JTextField cmpCliente;
     private javax.swing.JTextField cmpCorreo;
+    private javax.swing.JTextField cmpLetters;
     private javax.swing.JTextField cmpMarca_modelo;
     private javax.swing.JTextField cmpPlaca;
     private javax.swing.JTextArea cmp_observacion;
     private javax.swing.JComboBox combocajon;
+    private javax.swing.JTextField cpmNumbers;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -315,8 +457,7 @@ Calendar re=Calendar.getInstance();
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

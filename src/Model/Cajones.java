@@ -20,11 +20,12 @@ import javax.swing.JOptionPane;
 public class Cajones {
    DB base= new DB(); //instanciamos a la clade de conexión de nuestra base de datos
     public static Connection conexion;  //hacemos la conexión a la base de datos con ayuda de nuestra clase
-    int Numero,Estado;  //declaramos unas cuantas variables que ocupamos
+    int Numero,Estado,TipoVe;  //declaramos unas cuantas variables que ocupamos
     
     public Cajones(){
         this.Numero=0;
         this.Estado=0;
+        this.TipoVe=0;
     }
     
     public Cajones(int Numero){   //este método recibe como parametro el número de cajón y te retorna todos los datos asociados
@@ -78,9 +79,10 @@ public class Cajones {
         
     return numero2;}
     
-    public Cajones(int Numero, int Estado){  //el constructor
+    public Cajones(int Numero, int Estado,int TipoVe){  //el constructor
         this.Numero=Numero;
         this.Estado=Estado;
+        this.TipoVe = TipoVe;
     }
 
     public int getNumero() {   //los get and set
@@ -103,16 +105,17 @@ public class Cajones {
         
         try {
             conexion= base.GetConnection();
-            PreparedStatement insertar= conexion.prepareStatement("insert into cajon (Numero,Estado) values(?,?) ");
+            PreparedStatement insertar= conexion.prepareStatement("insert into cajon (Numero,Estado,TipoVehiculo) values(?,?,?) ");
             insertar.setInt(1, this.Numero);
             insertar.setInt(2,1);
+            insertar.setInt(3,this.TipoVe);
             insertar.executeUpdate();
             conexion.close();
              JOptionPane.showMessageDialog(null,"Guardado!", "Éxito al Guardar",1);
             return true;
            
          } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Problema al insertar"+ex.getMessage(),"error",1);
+            JOptionPane.showMessageDialog(null,"Problema al insertar in Cajones"+ex.getMessage(),"error",1);
             return false;
         }
         
