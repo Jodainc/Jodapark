@@ -26,7 +26,7 @@ public class DB {
             Class.forName("com.mysql.jdbc.Driver");  //driver 
             String servidor = "jdbc:mysql://localhost/estacionamiento";  //esta ruta de servidor puede ser localhost 3306 para linux
             String usuarioDB="root";
-            String passwordDB="Joda10";
+            String passwordDB="";
             conexion= DriverManager.getConnection(servidor,usuarioDB,passwordDB);
            
             

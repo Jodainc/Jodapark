@@ -38,7 +38,7 @@ public class aparcar extends javax.swing.JFrame {
         this.combocajon.setModel(modelo);   //aplicamos el modelo al combobox
         hora = new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
         hora.setForeground(Color.red);
-        hora.setBounds(120, 1, 150, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
+        hora.setBounds(120, 10, 155, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
         hora.setFont(new Font("Trebuchet MS", java.awt.Font.BOLD, 20));/*Cambiamos la fuente, estilo y tamaño*/
         this.panel.add(hora);
         System.out.println(re.get(Calendar.HOUR) + ": " + re.get(Calendar.MINUTE) + ": " + re.get(Calendar.SECOND));
@@ -68,10 +68,10 @@ public class aparcar extends javax.swing.JFrame {
 
         jLabel9 = new javax.swing.JLabel();
         claseAuto = new javax.swing.JSlider();
+        jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cmpLetters = new javax.swing.JTextField();
-        cmpPlaca = new javax.swing.JTextField();
         cpmNumbers = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         cmpCliente = new javax.swing.JTextField();
@@ -85,19 +85,18 @@ public class aparcar extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnlisto = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        panel = new javax.swing.JPanel();
         cmp_observacion = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        panel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        cmpPlaca = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(456, 640));
         setMinimumSize(new java.awt.Dimension(456, 640));
-        setPreferredSize(new java.awt.Dimension(456, 640));
-        setSize(new java.awt.Dimension(456, 640));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         claseAuto.setForeground(new java.awt.Color(28, 189, 235));
@@ -107,12 +106,17 @@ public class aparcar extends javax.swing.JFrame {
         claseAuto.setMinorTickSpacing(1);
         claseAuto.setPaintLabels(true);
         claseAuto.setValue(1);
+        claseAuto.setOpaque(false);
         claseAuto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 claseAutoStateChanged(evt);
             }
         });
-        getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 350, 60));
+        getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 370, 50));
+
+        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 315, 10, 28));
 
         jLabel8.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 204, 255));
@@ -120,23 +124,24 @@ public class aparcar extends javax.swing.JFrame {
         jLabel8.setText("Ganacias ");
         jLabel8.setToolTipText("Ganancias \nOptimas");
         jLabel8.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, 50));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(102, 204, 255));
         jLabel5.setText("45%");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, 50));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 110, 50));
 
-        cmpLetters.setFont(new java.awt.Font("DejaVu Sans", 3, 24));
+        cmpLetters.setFont(new java.awt.Font("DejaVu Sans", 3, 30));
         cmpLetters.setBorder(null);
-        cmpLetters.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                cmpLettersMouseMoved(evt);
-            }
-        });
+        cmpLetters.setOpaque(false);
         cmpLetters.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cmpLettersMouseClicked(evt);
+            }
+        });
+        cmpLetters.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                cmpLettersMouseMoved(evt);
             }
         });
         cmpLetters.addActionListener(new java.awt.event.ActionListener() {
@@ -149,41 +154,33 @@ public class aparcar extends javax.swing.JFrame {
                 cmpLettersPropertyChange(evt);
             }
         });
-        getContentPane().add(cmpLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 60, 30));
-
-        cmpPlaca.setBorder(null);
-        cmpPlaca.setOpaque(false);
-        cmpPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmpPlacaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 120, 25));
+        getContentPane().add(cmpLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 315, 73, 27));
 
         cpmNumbers.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         cpmNumbers.setBorder(null);
-        getContentPane().add(cpmNumbers, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 60, 30));
+        cpmNumbers.setOpaque(false);
+        getContentPane().add(cpmNumbers, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 315, 44, 26));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/placalabe.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 440, 60));
 
         cmpCliente.setBorder(null);
         cmpCliente.setOpaque(false);
-        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 310, 30));
+        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 360, 310, 30));
 
         cmpCorreo.setBorder(null);
         cmpCorreo.setOpaque(false);
-        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 310, 26));
+        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 415, 310, 26));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labepropietario.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 450, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 450, -1));
 
         cmpMarca_modelo.setBorder(null);
         cmpMarca_modelo.setOpaque(false);
-        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 315, 30));
+        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 459, 315, 28));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labemod.png"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 450, 50));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 450, 50));
 
         combocajon.setOpaque(false);
         combocajon.addActionListener(new java.awt.event.ActionListener() {
@@ -191,10 +188,10 @@ public class aparcar extends javax.swing.JFrame {
                 combocajonActionPerformed(evt);
             }
         });
-        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 310, -1));
+        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 311, 29));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labelug.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 450, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 450, 40));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -205,7 +202,7 @@ public class aparcar extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 40, 20));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labecel.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 450, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 450, -1));
 
         btnlisto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bRegis.png"))); // NOI18N
         btnlisto.setBorder(null);
@@ -215,16 +212,25 @@ public class aparcar extends javax.swing.JFrame {
                 btnlistoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 440, -1));
+        getContentPane().add(btnlisto, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 597, -1, 20));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
         jButton3.setBorder(null);
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, 30, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 30, 30));
+
+        cmp_observacion.setColumns(20);
+        cmp_observacion.setRows(5);
+        cmp_observacion.setOpaque(false);
+        getContentPane().add(cmp_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(63, 549, 312, 43));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labeObser.png"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 530, 450, 70));
 
         panel.setForeground(new java.awt.Color(255, 255, 255));
         panel.setFocusable(false);
@@ -235,18 +241,14 @@ public class aparcar extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 30));
-
-        cmp_observacion.setColumns(20);
-        cmp_observacion.setRows(5);
-        getContentPane().add(cmp_observacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 310, 60));
+        getContentPane().add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 240, 50));
 
         jLabel6.setFont(new java.awt.Font("Arial", 3, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 204, 255));
@@ -256,7 +258,16 @@ public class aparcar extends javax.swing.JFrame {
                 jLabel6ComponentAdded(evt);
             }
         });
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 580));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 460, 700));
+
+        cmpPlaca.setBorder(null);
+        cmpPlaca.setOpaque(false);
+        cmpPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpPlacaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, 25));
 
         jButton4.setText("jButton4");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
@@ -450,6 +461,8 @@ public class aparcar extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
