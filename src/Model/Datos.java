@@ -32,12 +32,17 @@ public class Datos {
     
     public StringBuilder Placa(StringBuilder letrasPla,StringBuilder numberPla){
         StringBuilder capPlaca = new StringBuilder();
+        String letraspla="";
         if (letrasPla.length() > 2 && numberPla.length()> 2 && letrasPla.length()<4 && numberPla.length()<4) {
                 if(isNumeric(numberPla.toString()) ){
                     letrasPla.setLength(3);
+                   letraspla=letrasPla.toString();
+                   letraspla.toUpperCase();
+                   String mayus = letraspla.toUpperCase();
+                   letrasPla.delete(0, 3);
+                   letrasPla.append(mayus);
             numberPla.setLength(3);
             capPlaca=letrasPla.append(capPlaca).append(numberPla);
-                    System.out.println("qui esta ");
                 }else{
                      JOptionPane.showMessageDialog(null,"Problema con la placa1"+"  "+letrasPla+numberPla,"Verifique"+"  "+letrasPla+numberPla,1);
                 }

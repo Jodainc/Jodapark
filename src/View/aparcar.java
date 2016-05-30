@@ -19,35 +19,26 @@ import javax.swing.JOptionPane;
  */
 public class aparcar extends javax.swing.JFrame {
 
-    DefaultComboBoxModel modelo = new DefaultComboBoxModel(); //creamos el modelo del combobox
-    int L;   //variables y objeto calendar.
+    DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+    int L;
     boolean f = true;
     private Reloj.Hora hora;
     Calendar re = Calendar.getInstance();
          int claseAut=0;
-
-//Cajones cajon = new Cajones();
-    /**
-     * Creates new form aparcar
-     */
-    public aparcar() {  //establecemos propiedades a la ventana, quitamos decoración...
+    public aparcar() {
         this.setUndecorated(true);
         this.setLocation(400, 50);
         initComponents();
         L = 0;
-        this.combocajon.setModel(modelo);   //aplicamos el modelo al combobox
-        hora = new Reloj.Hora();             //pintamos un nuevo reloj que con ayuda del jclock creamos.
+        this.combocajon.setModel(modelo);
+        hora = new Reloj.Hora();
         hora.setForeground(Color.red);
-        hora.setBounds(120, 10, 155, 30);/*(Ubicacion en eje x, Ubicacion en eje y, Ancho, Alto)*/
-        hora.setFont(new Font("Trebuchet MS", java.awt.Font.BOLD, 20));/*Cambiamos la fuente, estilo y tamaño*/
+        hora.setBounds(120, 10, 155, 30);
+        hora.setFont(new Font("Trebuchet MS", java.awt.Font.BOLD, 20));
         this.panel.add(hora);
-        System.out.println(re.get(Calendar.HOUR) + ": " + re.get(Calendar.MINUTE) + ": " + re.get(Calendar.SECOND));
-        System.out.println(L);
-        while (L < 12) {           //llenamos el combobox con los cajones disponibles.
+        while (L < 12) {
             Cajones cajon = new Cajones(L);
-            //System.out.println(cajon+"Cajones");
             if (cajon.ConsultaCajon(L) != L && cajon.getEstado() == 0) {
-                // Object caj= cajon.getNumero();
                 Object caj = L;
                 modelo.addElement(caj);
                 L++;
@@ -56,7 +47,6 @@ public class aparcar extends javax.swing.JFrame {
             }
         }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,23 +86,24 @@ public class aparcar extends javax.swing.JFrame {
         jLabel9.setText("jLabel9");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(456, 640));
+        setMinimumSize(new java.awt.Dimension(456, 620));
+        setPreferredSize(new java.awt.Dimension(456, 620));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        claseAuto.setForeground(new java.awt.Color(28, 189, 235));
+        claseAuto.setForeground(new java.awt.Color(233, 221, 244));
         claseAuto.setMajorTickSpacing(5);
         claseAuto.setMaximum(5);
         claseAuto.setMinimum(1);
         claseAuto.setMinorTickSpacing(1);
         claseAuto.setPaintLabels(true);
+        claseAuto.setPaintTicks(true);
         claseAuto.setValue(1);
-        claseAuto.setOpaque(false);
         claseAuto.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 claseAutoStateChanged(evt);
             }
         });
-        getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 370, 50));
+        getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 390, 60));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
@@ -134,14 +125,18 @@ public class aparcar extends javax.swing.JFrame {
         cmpLetters.setFont(new java.awt.Font("DejaVu Sans", 3, 30));
         cmpLetters.setBorder(null);
         cmpLetters.setOpaque(false);
-        cmpLetters.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                cmpLettersMouseClicked(evt);
-            }
-        });
+        Datos datoscli10 = new Datos();
+        cmpLetters.setText("");
+        cpmNumbers.setText("");
+        datoscli10.isCaden(cmpLetters, 2);
         cmpLetters.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 cmpLettersMouseMoved(evt);
+            }
+        });
+        cmpLetters.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmpLettersMouseClicked(evt);
             }
         });
         cmpLetters.addActionListener(new java.awt.event.ActionListener() {
@@ -154,11 +149,15 @@ public class aparcar extends javax.swing.JFrame {
                 cmpLettersPropertyChange(evt);
             }
         });
-        getContentPane().add(cmpLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 315, 73, 27));
+        getContentPane().add(cmpLetters, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 315, 73, 27));
 
         cpmNumbers.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
         cpmNumbers.setBorder(null);
         cpmNumbers.setOpaque(false);
+        Datos datoscli11 = new Datos();
+        cmpLetters.setText("");
+        cpmNumbers.setText("");
+        datoscli11.isProbar(cpmNumbers, 2);
         getContentPane().add(cpmNumbers, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 315, 44, 26));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/placalabe.png"))); // NOI18N
@@ -166,18 +165,18 @@ public class aparcar extends javax.swing.JFrame {
 
         cmpCliente.setBorder(null);
         cmpCliente.setOpaque(false);
-        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 360, 310, 30));
+        getContentPane().add(cmpCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 370, 317, 30));
 
         cmpCorreo.setBorder(null);
         cmpCorreo.setOpaque(false);
-        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 415, 310, 26));
+        getContentPane().add(cmpCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(55, 415, 315, 26));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labepropietario.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 450, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 450, -1));
 
         cmpMarca_modelo.setBorder(null);
         cmpMarca_modelo.setOpaque(false);
-        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 459, 315, 28));
+        getContentPane().add(cmpMarca_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 459, 314, 28));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labemod.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 440, 450, 50));
@@ -188,7 +187,7 @@ public class aparcar extends javax.swing.JFrame {
                 combocajonActionPerformed(evt);
             }
         });
-        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 311, 29));
+        getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(57, 500, 313, 29));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/labelug.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 490, 450, 40));
@@ -216,7 +215,6 @@ public class aparcar extends javax.swing.JFrame {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
         jButton3.setBorder(null);
-        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -241,7 +239,7 @@ public class aparcar extends javax.swing.JFrame {
         panel.setLayout(panelLayout);
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 240, Short.MAX_VALUE)
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,17 +275,13 @@ public class aparcar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private double tiempo() {//retornamos el tiempo actual.
-        int hora = re.get(Calendar.HOUR);
-        double minuto = re.get(Calendar.MINUTE) / 100.000;
-        double tiempo = hora + minuto;
-        System.out.println("Hora: " + hora + "     minuto: " + minuto + "      tiempo: " + tiempo);
+    private String tiempo() {
+        String tiempo =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH))+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
         return tiempo;
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new menu().setVisible(true);
-        System.out.println(L);
         this.dispose();      // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -312,22 +306,6 @@ public class aparcar extends javax.swing.JFrame {
                     }
                     }
         }
-    
-
-        /*Clientes cliente= new Clientes(this.cmpPlaca.getText(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText());  
-            Cajones cajon1= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()),0);
-            Cajones cajoncons= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
-           if(this.cmpPlaca.getText().length()==0 && this.cmpCliente.getText().length()==0 && this.cmpMarca_modelo.getText().length()==0 && this.cmp_observacion.getText().length()==0  ){
-                  JOptionPane.showMessageDialog(null,"Falta informacion por llenar!", "Llenar informacion Faltante",1); 
-            }else{
-                 if(cajoncons.ConsultaCajon(Integer.parseInt(this.combocajon.getSelectedItem().toString()))==0){
-               cajon1.Guardar();
-               cliente.Guardar();
-                 }
-           }
-      
-         */
-        //creamos cliente y actualizamos cajones
     }//GEN-LAST:event_btnlistoActionPerformed
 
     private void combocajonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combocajonActionPerformed

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JLabel;
 
 /**
  *
@@ -17,15 +18,21 @@ import java.sql.SQLException;
 public class data extends javax.swing.JFrame {
     DB base= new DB(); //instanciamos la clase de conexión  
     public static Connection conexion;  //obtenemos conexión con ayuda de la clase.
+    
     /**
-     * Creates new form data
+     * Creates new form dataa
      */
     public data() {
         this.setUndecorated(true); //quitamos la decoración de la ventana
+        //actualizar_datos(1);
         //this.setOpacity(0.75f); //decimos que sea 75% opaco / 25% transparente.
         initComponents();
-    }
 
+
+        //myInitComponents();
+           
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +42,7 @@ public class data extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,9 +56,25 @@ public class data extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Datos Generales");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -70,18 +94,23 @@ public class data extends javax.swing.JFrame {
 
         ET_Placa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Placa.setForeground(new java.awt.Color(0, 255, 0));
-        ET_Placa.setText("PLACA");
+        ET_Placa.setText("Placa");
+        ET_Placa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ET_PlacaMouseEntered(evt);
+            }
+        });
         getContentPane().add(ET_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 140, -1));
 
         ET_Propietario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Propietario.setForeground(new java.awt.Color(102, 255, 0));
         ET_Propietario.setText("DUEÑO");
-        getContentPane().add(ET_Propietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(71, 110, 140, -1));
+        getContentPane().add(ET_Propietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 130, -1));
 
         ET_Vehiculo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Vehiculo.setForeground(new java.awt.Color(102, 255, 0));
         ET_Vehiculo.setText("CARRO");
-        getContentPane().add(ET_Vehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 150, 150, -1));
+        getContentPane().add(ET_Vehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 20));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/fondo_data.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 240, 270));
@@ -89,12 +118,33 @@ public class data extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        // TODO add your handling code here:
+                  data a = new data();
+          a.actualizar_datos(1);
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        update();  
+        actualizar_datos(1);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ET_PlacaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ET_PlacaMouseEntered
+        //ET_Placa.setText("Hola");
+        //ET_Propietario.setText("hola");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ET_PlacaMouseEntered
+
     public void actualizar_datos(int Cajon_Numero){  //actualiamos los datos que vamos a mostrar dependiendo el cajón
         conexion = base.GetConnection();
         PreparedStatement select;
         try {
             select = conexion.prepareStatement("select * from cliente where Cajon_Numero= '"+Cajon_Numero+"'");
-            //select.setInt(5,Cajon_Numero);
             boolean consulta = select.execute();
             if(consulta){
                 ResultSet resultado =  select.executeQuery();
@@ -104,6 +154,12 @@ public class data extends javax.swing.JFrame {
                     this.ET_Vehiculo.setText(resultado.getString(4));
                    
                 }
+                
+                ///*
+                else{
+                    resultado.close();
+                }
+                //*/
                 resultado.close();
             }
             conexion.close();
@@ -111,7 +167,11 @@ public class data extends javax.swing.JFrame {
             System.err.println("Ocurrió un error: "+ex.getMessage().toString());
         }
     }
-    
+      public void update(){  //actualiamos los datos que vamos a mostrar dependiendo el cajón
+                                      this.ET_Placa.setText( "Placa    ");
+                    this.ET_Propietario.setText("Propietario    ");
+                  this.ET_Vehiculo.setText("Vehiculo     ");
+    }
     /**
      * @param args the command line arguments
      */
@@ -120,25 +180,8 @@ public class data extends javax.swing.JFrame {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+         *
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -152,11 +195,12 @@ public class data extends javax.swing.JFrame {
     private javax.swing.JLabel ET_Placa;
     private javax.swing.JLabel ET_Propietario;
     private javax.swing.JLabel ET_Vehiculo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton jButton1;
+    public javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel jLabel3;
+    public javax.swing.JLabel jLabel4;
+    public javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

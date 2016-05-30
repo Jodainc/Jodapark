@@ -21,8 +21,7 @@ public class Clientes {
     DB base= new DB();  //instanciamos nuestra clase de base de datos
     public static Connection conexion;   //hacemos la conexión con ayuda de la clase DB
     int Cajon_Numero,Tipove;
-    String Placa, Nombre, Correo, Marca_modelo,Obser;  //declaramos variables
-    Double Llegada;
+    String Placa, Nombre, Correo, Marca_modelo,Obser, Llegada;
     
     public Clientes(){  //constructor default
         this.Cajon_Numero=0;
@@ -30,7 +29,7 @@ public class Clientes {
         this.Nombre="";
         this.Correo="";
         this.Marca_modelo="";
-        this.Llegada=0.0;
+        this.Llegada="";
         this.Obser="";
         this.Tipove=0;
     }
@@ -50,7 +49,7 @@ public class Clientes {
                     this.Correo= resultado.getString(3);
                     this.Marca_modelo= resultado.getString(4);
                      this.Cajon_Numero= resultado.getInt(5);
-                     this.Llegada=resultado.getDouble(6);
+                     this.Llegada=resultado.getString(6);
                 }
                 resultado.close();
             }
@@ -75,7 +74,7 @@ public class Clientes {
                     this.Correo= resultado.getString(3);
                     this.Marca_modelo= resultado.getString(4);
                      this.Cajon_Numero= resultado.getInt(5);
-                     this.Llegada=resultado.getDouble(6);
+                     this.Llegada=resultado.getString(6);
                 }
                 resultado.close();
             }
@@ -86,7 +85,7 @@ public class Clientes {
     }
     
       //constructor
-    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, double Llegada,String Obser,int Tipove){
+    public Clientes (String Placa, String Nombre, String Correo, String Marca_modelo, int Cajon_Numero, String Llegada,String Obser,int Tipove){
         this.Placa=Placa;
         this.Nombre=Nombre;
         this.Correo=Correo;
@@ -130,11 +129,11 @@ public class Clientes {
         this.Marca_modelo = Marca_modelo;
     }
 
-    public Double getLlegada() {
+    public String getLlegada() {
         return Llegada;
     }
 
-    public void setLlegada(Double Llegada) {
+    public void setLlegada(String Llegada) {
         this.Llegada = Llegada;
     }
 
@@ -173,7 +172,7 @@ public class Clientes {
             insertar.setString(3, Correo);
             insertar.setString(4,Marca_modelo);
             insertar.setInt(5,Cajon_Numero);
-            insertar.setDouble(6, Llegada);
+            insertar.setString(6, Llegada);
             insertar.setString(7,Obser);
               insertar.setInt(8,Tipove);
             insertar.executeUpdate();

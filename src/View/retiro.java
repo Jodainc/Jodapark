@@ -322,9 +322,10 @@ int L;
     }//GEN-LAST:event_combocajonMouseClicked
                         
     private void combocajonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combocajonItemStateChanged
-      try{
-       Clientes client= new Clientes(Integer.parseInt(this.combocajon.getSelectedItem().toString()));        
-       double llegada= client.getLlegada();
+      /*
+        try{
+          Clientes client= new Clientes(Integer.parseInt(this.combocajon.getSelectedItem().toString()));        
+       String llegada= client.getLlegada();
        double fin= tiempo();
        double total= fin-llegada;
        if(total<0){
@@ -344,6 +345,7 @@ int L;
        catch(Exception ex){
            System.out.println("error");
        }
+          */
       
     }//GEN-LAST:event_combocajonItemStateChanged
 
