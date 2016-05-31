@@ -18,13 +18,12 @@ public class mapa extends javax.swing.JFrame {
      */
     public mapa() {
         this.setUndecorated(true);
-       //no hay mucho secreto, simplemente hacemos invisibles las etiquetas (que pintan carros)
         initComponents();
-       info.setVisible(false);
-       this.boton_retirada1.setVisible(false);
-       L=1; 
-        actualizar_carros();
-        this.boton_retirada.setVisible(false);
+        info.setVisible(false);
+        L=1; 
+        actualizar_carros(); 
+         this.boton_retirada1.setVisible(false);
+         this.boton_retirada.setVisible(false);
          this.boton_retirada2.setVisible(false);
          this.boton_retirada3.setVisible(false);
          this.boton_retirada4.setVisible(false);
@@ -33,10 +32,7 @@ public class mapa extends javax.swing.JFrame {
          this.boton_retirada7.setVisible(false);
          this.boton_retirada8.setVisible(false);
          this.boton_retirada9.setVisible(false);
-         this.boton_retirada10.setVisible(false);
-
-        
-     
+         this.boton_retirada10.setVisible(false);  
     }
 
     /**
@@ -48,6 +44,16 @@ public class mapa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        boton_retirada1 = new javax.swing.JButton();
+        boton_retirada2 = new javax.swing.JButton();
+        boton_retirada3 = new javax.swing.JButton();
+        boton_retirada4 = new javax.swing.JButton();
+        boton_retirada5 = new javax.swing.JButton();
+        boton_retirada6 = new javax.swing.JButton();
+        boton_retirada7 = new javax.swing.JButton();
+        boton_retirada8 = new javax.swing.JButton();
+        boton_retirada9 = new javax.swing.JButton();
+        boton_retirada10 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         boton_retirada = new javax.swing.JButton();
@@ -62,21 +68,111 @@ public class mapa extends javax.swing.JFrame {
         carro_9 = new javax.swing.JLabel();
         carro_10 = new javax.swing.JLabel();
         carro_11 = new javax.swing.JLabel();
-        boton_retirada1 = new javax.swing.JButton();
-        boton_retirada2 = new javax.swing.JButton();
-        boton_retirada3 = new javax.swing.JButton();
-        boton_retirada4 = new javax.swing.JButton();
-        boton_retirada5 = new javax.swing.JButton();
-        boton_retirada6 = new javax.swing.JButton();
-        boton_retirada7 = new javax.swing.JButton();
-        boton_retirada8 = new javax.swing.JButton();
-        boton_retirada9 = new javax.swing.JButton();
-        boton_retirada10 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        boton_retirada1.setText("Retirar");
+        boton_retirada1.setFocusPainted(false);
+        boton_retirada1.setFocusable(false);
+        boton_retirada1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, 20));
+
+        boton_retirada2.setText("Retirar");
+        boton_retirada2.setFocusPainted(false);
+        boton_retirada2.setFocusable(false);
+        boton_retirada2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, -1, 20));
+
+        boton_retirada3.setText("Retirar");
+        boton_retirada3.setFocusPainted(false);
+        boton_retirada3.setFocusable(false);
+        boton_retirada3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, -1, 20));
+
+        boton_retirada4.setText("Retirar");
+        boton_retirada4.setFocusPainted(false);
+        boton_retirada4.setFocusable(false);
+        boton_retirada4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, -1, -1));
+
+        boton_retirada5.setText("Retirar");
+        boton_retirada5.setFocusPainted(false);
+        boton_retirada5.setFocusable(false);
+        boton_retirada5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
+
+        boton_retirada6.setText("Retirar");
+        boton_retirada6.setFocusPainted(false);
+        boton_retirada6.setFocusable(false);
+        boton_retirada6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 160, -1, -1));
+
+        boton_retirada7.setText("Retirar");
+        boton_retirada7.setFocusPainted(false);
+        boton_retirada7.setFocusable(false);
+        boton_retirada7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, -1, -1));
+
+        boton_retirada8.setText("Retirar");
+        boton_retirada8.setFocusPainted(false);
+        boton_retirada8.setFocusable(false);
+        boton_retirada8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+
+        boton_retirada9.setText("Retirar");
+        boton_retirada9.setFocusPainted(false);
+        boton_retirada9.setFocusable(false);
+        boton_retirada9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, -1, -1));
+
+        boton_retirada10.setText("Retirar");
+        boton_retirada10.setFocusPainted(false);
+        boton_retirada10.setFocusable(false);
+        boton_retirada10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boton_retirada10ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(boton_retirada10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 610, -1, -1));
 
         jButton1.setText("Menú");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +180,7 @@ public class mapa extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 400, -1, 31));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 410, -1, 31));
 
         jButton2.setText("X");
         jButton2.setBorderPainted(false);
@@ -105,9 +201,12 @@ public class mapa extends javax.swing.JFrame {
                 boton_retiradaActionPerformed(evt);
             }
         });
-        getContentPane().add(boton_retirada, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 620, -1, -1));
+        getContentPane().add(boton_retirada, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 600, -1, -1));
 
-        carro_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        carro_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro3_1.png"))); // NOI18N
+        Cajones a100 = new Cajones();
+        Cajones a101 = new Cajones(a100.ConsultaCajon(1));
+        carro_1.setIcon(new javax.swing.ImageIcon(getClass().getResource(a101.TipoImagen(2))));
         carro_1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 carro_1MousePressed(evt);
@@ -125,9 +224,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_1MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 150, 110));
+        getContentPane().add(carro_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 80, 90, 110));
 
-        carro_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        carro_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro3_1.png"))); // NOI18N
+        Cajones a2 = new Cajones();
+        Cajones a22 = new Cajones(a2.ConsultaCajon(2));
+        carro_2.setIcon(new javax.swing.ImageIcon(getClass().getResource(a22.TipoImagen(2))));
         carro_2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_2MouseExited(evt);
@@ -136,9 +238,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_2MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 160, 90));
+        getContentPane().add(carro_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 100, 110));
 
-        carro_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        carro_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro3_1.png"))); // NOI18N
+        Cajones a3 = new Cajones();
+        Cajones a33 = new Cajones(a3.ConsultaCajon(3));
+        carro_3.setIcon(new javax.swing.ImageIcon(getClass().getResource(a33.TipoImagen(2))));
         carro_3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_3MouseExited(evt);
@@ -147,9 +252,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_3MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 150, 100));
+        getContentPane().add(carro_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 90, 120));
 
         carro_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2_1.png"))); // NOI18N
+        Cajones a4 = new Cajones();
+        Cajones a44 = new Cajones(a4.ConsultaCajon(4));
+        carro_4.setIcon(new javax.swing.ImageIcon(getClass().getResource(a44.TipoImagen(3))));
         carro_4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_4MouseExited(evt);
@@ -158,9 +266,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_4MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 150, 90));
+        getContentPane().add(carro_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 150, 50));
 
         carro_6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2_1.png"))); // NOI18N
+        Cajones a6 = new Cajones();
+        Cajones a66 = new Cajones(a6.ConsultaCajon(6));
+        carro_6.setIcon(new javax.swing.ImageIcon(getClass().getResource(a66.TipoImagen(3))));
         carro_6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_6MouseExited(evt);
@@ -169,9 +280,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_6MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 150, 90));
+        getContentPane().add(carro_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 380, 150, 50));
 
         carro_5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2_1.png"))); // NOI18N
+        Cajones a5 = new Cajones();
+        Cajones a55 = new Cajones(a5.ConsultaCajon(5));
+        carro_5.setIcon(new javax.swing.ImageIcon(getClass().getResource(a55.TipoImagen(3))));
         carro_5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_5MouseExited(evt);
@@ -180,9 +294,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_5MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, 150, 100));
+        getContentPane().add(carro_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 150, 100));
 
         carro_7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        Cajones a7 = new Cajones();
+        Cajones a77 = new Cajones(a7.ConsultaCajon(7));
+        carro_7.setIcon(new javax.swing.ImageIcon(getClass().getResource(a77.TipoImagen(1))));
         carro_7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_7MouseExited(evt);
@@ -191,9 +308,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_7MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 150, 90));
+        getContentPane().add(carro_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 150, 50));
 
         carro_8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        Cajones a8 = new Cajones();
+        Cajones a88 = new Cajones(a8.ConsultaCajon(8));
+        carro_8.setIcon(new javax.swing.ImageIcon(getClass().getResource(a88.TipoImagen(1))));
         carro_8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_8MouseExited(evt);
@@ -202,9 +322,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_8MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 280, 150, 110));
+        getContentPane().add(carro_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 150, 50));
 
         carro_9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/image3004.png"))); // NOI18N
+        Cajones a9 = new Cajones();
+        Cajones a99 = new Cajones(a9.ConsultaCajon(9));
+        carro_9.setIcon(new javax.swing.ImageIcon(getClass().getResource(a99.TipoImagen(1))));
         carro_9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_9MouseExited(evt);
@@ -213,9 +336,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_9MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, 150, 90));
+        getContentPane().add(carro_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, 140, 50));
 
-        carro_10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2_1.png"))); // NOI18N
+        carro_10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2.png"))); // NOI18N
+        Cajones a102 = new Cajones();
+        Cajones a10 = new Cajones(a102.ConsultaCajon(10));
+        carro_10.setIcon(new javax.swing.ImageIcon(getClass().getResource(a10.TipoImagen(1))));
         carro_10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_10MouseExited(evt);
@@ -224,9 +350,12 @@ public class mapa extends javax.swing.JFrame {
                 carro_10MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, 150, 100));
+        getContentPane().add(carro_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 640, 150, 60));
 
-        carro_11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro2_1.png"))); // NOI18N
+        carro_11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/carro3_1.png"))); // NOI18N
+        Cajones a113 = new Cajones();
+        Cajones a11 = new Cajones(a113.ConsultaCajon(11));
+        carro_11.setIcon(new javax.swing.ImageIcon(getClass().getResource(a11.TipoImagen(2))));
         carro_11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 carro_11MouseExited(evt);
@@ -235,120 +364,19 @@ public class mapa extends javax.swing.JFrame {
                 carro_11MouseEntered(evt);
             }
         });
-        getContentPane().add(carro_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 530, 140, 90));
+        getContentPane().add(carro_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 640, 90, 110));
 
-        boton_retirada1.setText("Retirar");
-        boton_retirada1.setFocusPainted(false);
-        boton_retirada1.setFocusable(false);
-        boton_retirada1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 610, -1, -1));
-
-        boton_retirada2.setText("Retirar");
-        boton_retirada2.setFocusPainted(false);
-        boton_retirada2.setFocusable(false);
-        boton_retirada2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, -1, -1));
-
-        boton_retirada3.setText("Retirar");
-        boton_retirada3.setFocusPainted(false);
-        boton_retirada3.setFocusable(false);
-        boton_retirada3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
-
-        boton_retirada4.setText("Retirar");
-        boton_retirada4.setFocusPainted(false);
-        boton_retirada4.setFocusable(false);
-        boton_retirada4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada4ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 180, -1, -1));
-
-        boton_retirada5.setText("Retirar");
-        boton_retirada5.setFocusPainted(false);
-        boton_retirada5.setFocusable(false);
-        boton_retirada5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, -1));
-
-        boton_retirada6.setText("Retirar");
-        boton_retirada6.setFocusPainted(false);
-        boton_retirada6.setFocusable(false);
-        boton_retirada6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 550, -1, -1));
-
-        boton_retirada7.setText("Retirar");
-        boton_retirada7.setFocusPainted(false);
-        boton_retirada7.setFocusable(false);
-        boton_retirada7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada7ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 550, -1, -1));
-
-        boton_retirada8.setText("Retirar");
-        boton_retirada8.setFocusPainted(false);
-        boton_retirada8.setFocusable(false);
-        boton_retirada8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 380, -1, -1));
-
-        boton_retirada9.setText("Retirar");
-        boton_retirada9.setFocusPainted(false);
-        boton_retirada9.setFocusable(false);
-        boton_retirada9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada9ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada9, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
-
-        boton_retirada10.setText("Retirar");
-        boton_retirada10.setFocusPainted(false);
-        boton_retirada10.setFocusable(false);
-        boton_retirada10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boton_retirada10ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(boton_retirada10, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 250, -1, -1));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/mapa_gde2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/Parqueo.png"))); // NOI18N
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel1MouseEntered(evt);
             }
         });
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1080, 770));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1110, 820));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     public void accion(int num){
-       
         ret.retiro_mapa(num);
         ret.setVisible(true);
         this.dispose();
@@ -356,10 +384,10 @@ public class mapa extends javax.swing.JFrame {
     
     
     private void actualizar_carros(){ //cuando se inicia el mapa pintamos los cajones.
-         while (L<12){
+        while (L<12){
             Cajones cajon= new Cajones(L);
          //   System.out.println(cajon.getEstado());
-          if(cajon.getEstado()==2){
+          if(cajon.getEstado()==0){
          if(L==1){
              this.carro_1.setVisible(false);
              
@@ -476,7 +504,7 @@ public class mapa extends javax.swing.JFrame {
                    L++;   
              
           }         
-        }  
+        } 
     }
     
     
@@ -492,14 +520,13 @@ public class mapa extends javax.swing.JFrame {
     //el secreto está en que cuando hacen focus al área del cajón mandamos a llamar la ventana que nos muestra
     // datos y además hacemos visible el boton para retirar.
     private void carro_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_1MouseEntered
-
+/*
             info.actualizar_datos(1);
         info.setVisible(true); 
         info.setLayout(null);
         info.setBounds(259, 400, 220,240);
-         this.boton_retirada1.setVisible(true);
-     
-       
+  */
+        this.boton_retirada1.setVisible(true);
     }//GEN-LAST:event_carro_1MouseEntered
 
     private void carro_1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_1MouseExited
@@ -509,13 +536,15 @@ public class mapa extends javax.swing.JFrame {
     }//GEN-LAST:event_carro_1MouseExited
 
     private void carro_2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_2MouseEntered
-                System.out.println("esta en el"+2);
+              this.boton_retirada2.setVisible(true);        
+        System.out.println("esta en el"+2);
                         info.update();
         info.actualizar_datos(2);
         info.setVisible(true); 
         info.setLayout(null);
         info.setBounds(259, 300, 220,240);
-      this.boton_retirada2.setVisible(true);
+              this.boton_retirada2.setVisible(true);
+
     }//GEN-LAST:event_carro_2MouseEntered
 
     private void carro_2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_2MouseExited
@@ -753,7 +782,7 @@ info.actualizar_datos(1);
 
     private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
         // TODO add your handling code here:
-        initComponents();
+        //initComponents();
     }//GEN-LAST:event_jLabel1MouseEntered
 
     private void carro_1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_1MouseReleased

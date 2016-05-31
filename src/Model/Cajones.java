@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model;
 import static Model.usuarios.conexion;
 import java.sql.Connection;
@@ -42,6 +38,7 @@ public class Cajones {
                 if(resultado.next()){
                     this.Numero= resultado.getInt(1);
                     this.Estado=resultado.getInt(2);
+                    this.TipoVe= resultado.getInt(3);
                   
                 }
                 resultado.close();
@@ -50,6 +47,70 @@ public class Cajones {
         } catch (SQLException ex) {
             System.err.println("Ocurrió un error: "+ex.getMessage().toString());
         }
+    }
+        public int TipoVehic(int Numero){   //este método recibe como parametro el número de cajón y te retorna todos los datos asociados
+        
+                int cont=0;
+                int cont1=0;
+                int tipoVehi=0;
+        conexion = base.GetConnection();
+        PreparedStatement select;
+        try {
+            select = conexion.prepareStatement("select * from cajon where Numero= ?");
+            select.setInt(1, Numero);
+            boolean consulta = select.execute();
+            if(consulta){
+                ResultSet resultado =  select.getResultSet();
+                if(resultado.next()){
+                    this.Numero= resultado.getInt(1);
+                    this.Estado=resultado.getInt(2);
+                    this.TipoVe= resultado.getInt(3);
+                  
+                }
+                resultado.close();
+            }
+            conexion.close();
+        } catch (SQLException ex) {
+            System.err.println("Ocurrió un error: "+ex.getMessage().toString());
+        }
+        return tipoVehi;
+        }
+    public String TipoImagen(int tipoCajon){
+        String tipoImagen="";
+        switch(this.TipoVe){
+            case 1 :
+                if(tipoCajon==1){
+                       tipoImagen="/backgrounds/image3007.png";
+                }else if(tipoCajon==2){
+                     tipoImagen="/backgrounds/moto3_1.png";
+                }else{
+                    tipoImagen="/backgrounds/moto2_1.png";
+                }
+             
+                break;
+                case 2 :
+                            if(tipoCajon==1){
+                       tipoImagen= "/backgrounds/image3004.png";
+                }else if(tipoCajon==2){
+                     tipoImagen= "/backgrounds/carro3_1.png";
+                }else{
+                    tipoImagen="/backgrounds/carro2_1.png";
+                }
+             
+                break;
+                default:
+                  if(tipoCajon==1){
+                       tipoImagen= "/backgrounds/image3004.png";
+                }else if(tipoCajon==2){
+                     tipoImagen= "/backgrounds/carro3_1.png";
+                }else{
+                    tipoImagen="/backgrounds/carro2_1.png";
+                }
+                break;
+                
+        } 
+        
+        return tipoImagen;
     }
     public int ConsultaCajon(int numero){
          int numero2=5;
@@ -99,6 +160,13 @@ public class Cajones {
 
     public void setEstado(int Estado) {
         this.Estado = Estado;
+    }
+        public int getTipove() {
+        return Estado;
+    }
+
+    public void setTipove(int Tipove) {
+        this.TipoVe = TipoVe;
     }
     
         public boolean Guardar(){  //guarda el cajon   actual apuntado en el constructor

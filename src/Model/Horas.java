@@ -27,13 +27,18 @@ public class Horas {
     
         public long retornaDiferencia(String fechaInicial1,String fechaFinal1){
  /**Creamos una instancia de la clase calendar*/
+   System.out.println("fecha String"+fechaInicial1);
+            System.out.println("fecha String"+fechaFinal1);
         Calendar calFechaInicial=Calendar.getInstance();
         Calendar calFechaFinal=Calendar.getInstance();
-        Date fechaInicial= StringToDate(fechaInicial1, "/", 0);//yyyy-MM-dd
-        Date fechaFinal= StringToDate(fechaFinal1, "/", 0);
+        Date fechaInicial= StringToDate(fechaInicial1, "/", 1);//yyyy-MM-dd
+        Date fechaFinal= StringToDate(fechaFinal1, "/", 1);
+         System.out.println("fecha"+fechaInicial);
+            System.out.println("fecha"+fechaFinal);
  /**Le pasamos el objeto Date al metodo set time*/
         calFechaInicial.setTime(fechaInicial);
         calFechaFinal.setTime(fechaFinal);
+           
         long horas=diferenciaHorasDias(calFechaInicial,
                 calFechaFinal)+diferenciaHoras(calFechaInicial,calFechaFinal);
         long minutos=diferenciaMinutos(calFechaInicial,calFechaFinal);

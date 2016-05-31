@@ -7,6 +7,7 @@ package View;
 import Model.Cajones;
 import Model.Clientes;
 import Model.DB;
+import Model.Horas;
 import Model.Recibos;
 import Model.javapdf;
 import com.itextpdf.text.DocumentException;
@@ -56,7 +57,7 @@ int L;
         this.combocajon.setModel(modelo);
         while (L<12){
             Cajones cajon= new Cajones(L);
-          if(cajon.getEstado()==0){
+          if(cajon.getEstado()==1){
           Object caj= cajon.getNumero();
           modelo.addElement(caj);
           L++;
@@ -127,17 +128,17 @@ int L;
         combocajon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione...", " " }));
         combocajon.setBorder(null);
         combocajon.setOpaque(false);
-        combocajon.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                combocajonMouseClicked(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                combocajonMouseReleased(evt);
-            }
-        });
         combocajon.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 combocajonItemStateChanged(evt);
+            }
+        });
+        combocajon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                combocajonMouseReleased(evt);
+            }
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                combocajonMouseClicked(evt);
             }
         });
         combocajon.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +149,7 @@ int L;
         getContentPane().add(combocajon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 362, 640, 30));
 
         cmpTiempo.setText("determinado");
+        cmpTiempo.setEnabled(false);
         cmpTiempo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpTiempoActionPerformed(evt);
@@ -156,6 +158,7 @@ int L;
         getContentPane().add(cmpTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 410, 638, 35));
 
         cmpPago.setText("Calculada");
+        cmpPago.setEnabled(false);
         cmpPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmpPagoActionPerformed(evt);
@@ -208,7 +211,6 @@ int L;
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/Exit.png"))); // NOI18N
         jButton6.setBorder(null);
-        jButton6.setOpaque(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -225,26 +227,9 @@ int L;
         this.combocajon.setSelectedItem(caj);
     }
     
-    private String fecha(){  //retorna la fecha en forma de string.
-        int año=  re.get(Calendar.YEAR);
-        int mes= re.get(Calendar.MONTH);
-        int dia= re.get(Calendar.DAY_OF_MONTH);
-        if(mes<10){
-            if(dia<10){
-               String fecha= String.valueOf(año)+"-0"+String.valueOf(mes)+"-0"+String.valueOf(dia);  
-               return fecha;
-            }
-            String fecha= String.valueOf(año)+"-0"+String.valueOf(mes)+"-"+String.valueOf(dia); 
+    private String fecha(){  
+        String fecha =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH))+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
             return fecha;
-        }
-        else{
-             if(dia<10){
-               String fecha= String.valueOf(año)+"-0"+String.valueOf(mes)+"-0"+String.valueOf(dia);
-               return fecha;
-            }
-            String fecha= String.valueOf(año)+"-"+String.valueOf(mes)+"-"+String.valueOf(dia);
-            return fecha;
-        }
         
     }
     
@@ -272,7 +257,7 @@ int L;
        else{
          String letras= this.cmpBusqueda.getText();
             try {
-                PreparedStatement ps = conect.prepareStatement("SELECT Nombre,Placa,Marca_modelo,Cajon_Numero from cliente where Nombre like'%"+letras+"%'");
+                PreparedStatement ps = conect.prepareStatement("SELECT Nombre,Placa,Marca_modelo,Cajon_Numero from cliente where Placa like'%"+letras+"%'");
                 ResultSet rs = ps.executeQuery();
                 
                
@@ -322,31 +307,32 @@ int L;
     }//GEN-LAST:event_combocajonMouseClicked
                         
     private void combocajonItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combocajonItemStateChanged
-      /*
+        
         try{
           Clientes client= new Clientes(Integer.parseInt(this.combocajon.getSelectedItem().toString()));        
-       String llegada= client.getLlegada();
-       double fin= tiempo();
-       double total= fin-llegada;
-       if(total<0){
-           total=total*-1;
-       }
-       long l= (long)total;
-       double dd=total-(double)l;
-       dd=(dd*60)/100;
-       dd=dd*100;
-       long P= (long)dd;
-       System.out.println(total+"     y      "+dd+"   y   "+l);
-   
-       double pago= total*20;
-       this.cmpTiempo.setText(l+"."+P);   //pintamos el tiempo en la textfield
-       this.cmpPago.setText(String.format("%3.2f",pago).replace(".00","")); //y el pago. diciéndole que solo ocupamos 2 cifras después del punto decimal.
+          String llegada= client.getLlegada();
+            System.out.println("Fecha llegada::"+llegada);
+          String Salida = fecha();
+          System.out.println("Fecha Salida::"+Salida);
+            Horas cambio = new Horas();
+            System.out.println("Cambio"+cambio.toString());
+            long diferencia = cambio.retornaDiferencia(llegada, Salida);
+            System.out.println("Fecha Salida::"+diferencia);
+            long horas = cambio.retornaHoras(llegada, Salida);
+            System.out.println("Fecha Salida::"+horas);
+            long minutos = cambio.retornaMinutos(llegada, Salida);
+            System.out.println("Fecha Salida::"+minutos);
+            long segundos = cambio.retornaSegundos(llegada, Salida);
+            System.out.println("Fecha Salida::"+segundos);
+       System.out.println(diferencia+" "+"    Horas     "+horas+" "+"  minutos   "+minutos+" "+"  Segundos   "+segundos);
+       //this.cmpTiempo.setText(""+diferencia);   //pintamos el tiempo en la textfield
+       //long valor = (long) 0.24;
+       //long resultado = diferencia*valor;
+       //this.cmpPago.setText("Resultado es::"+resultado); //y el pago. diciéndole que solo ocupamos 2 cifras después del punto decimal.
        }
        catch(Exception ex){
-           System.out.println("error");
+           System.out.println("error"+ ex.getMessage());
        }
-          */
-      
     }//GEN-LAST:event_combocajonItemStateChanged
 
     private void cmpPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmpPagoActionPerformed
@@ -354,16 +340,16 @@ int L;
     }//GEN-LAST:event_cmpPagoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Clientes client= new Clientes(Integer.parseInt(this.combocajon.getSelectedItem().toString()));    
+         Clientes client= new Clientes(Integer.parseInt(this.combocajon.getSelectedItem().toString()));    
         double tim=Double.parseDouble((this.cmpTiempo.getText()));
         double pag=Double.parseDouble((this.cmpPago.getText()));  //básicamente obtenemos los datos del cliente de acuerdo al cajón en el que esté ubicado.
        Cajones cajon= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
         cajon.actualizar2();
         System.out.println("Cliente: "+client.getNombre()+" "+tim+"    y    "+pag+"   fecha:  "+fecha());
-        Recibos recibo= new Recibos(client.getNombre(),tim,pag,this.cmpTipo.getText(),fecha());
-        recibo.Guardar();   //guardamos el recibo con los datos actuales en nuestros campos.
-        Recibos rcpdf= new Recibos(client.getNombre());
-        
+        //Recibos recibo= new Recibos(client.getNombre(),tim,pag,this.cmpTipo.getText(),fecha());
+        //recibo.Guardar();   //guardamos el recibo con los datos actuales en nuestros campos.
+        //Recibos rcpdf= new Recibos(client.getNombre());
+        /*
         javapdf pdf = new javapdf();  //creamos un pdf con los datos del recibo creado.
         try {
             pdf.createPdf(String.valueOf(rcpdf.getFolio()),rcpdf.getCliente(),String.valueOf(rcpdf.getTiempo()),rcpdf.getTipo_pago(),String.valueOf(rcpdf.getImporte()),rcpdf.getFecha());
@@ -380,6 +366,7 @@ int L;
             } catch(Exception e) {
                e.printStackTrace();
                 }
+        */
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 

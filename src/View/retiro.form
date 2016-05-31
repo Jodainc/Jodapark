@@ -79,9 +79,9 @@
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="combocajonMouseClicked"/>
-        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="combocajonMouseReleased"/>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="combocajonItemStateChanged"/>
+        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="combocajonMouseReleased"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="combocajonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="combocajonActionPerformed"/>
       </Events>
       <Constraints>
@@ -93,6 +93,7 @@
     <Component class="javax.swing.JTextField" name="cmpTiempo">
       <Properties>
         <Property name="text" type="java.lang.String" value="determinado"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmpTiempoActionPerformed"/>
@@ -106,6 +107,7 @@
     <Component class="javax.swing.JTextField" name="cmpPago">
       <Properties>
         <Property name="text" type="java.lang.String" value="Calculada"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmpPagoActionPerformed"/>
