@@ -1,9 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
-
+import Model.CambioValor;
 import Model.DB;
 import Model.usuarios;
 import java.sql.Connection;
@@ -11,26 +7,33 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author JODA
  */
-public class alta_usuario extends javax.swing.JFrame {
-
+public class CambioValores extends javax.swing.JFrame {
     /**
      * Creates new form alta_usuario
      */
-    public alta_usuario() {
-      
+    public CambioValores() {
         initComponents();
-        
     }
 public int llenar_id(){  //añadimos una nueva ID a los parámetros 
-     usuarios start = new usuarios();
+     CambioValor start = new CambioValor();
        int newid=start.ultimo_id()+1;
       return newid;
 }
+public int Saber_id(){  //añadimos una nueva ID a los parámetros 
+     CambioValor start = new CambioValor();
+       int newid=start.ultimo_id();
+      return newid;
+}
+public int Sabervar_id(){  //añadimos una nueva ID a los parámetros 
+     CambioValor start = new CambioValor();
+       int newid=start.ultiValor_id();
+      return newid;
+}
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,11 +45,11 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
 
         cmpPuesto = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        cmpContraseña = new javax.swing.JPasswordField();
         cmpNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        cmpContraseña = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -55,7 +58,6 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(606, 530));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -74,15 +76,11 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 40, 30));
         jButton5.getAccessibleContext().setAccessibleDescription("");
 
-        cmpContraseña.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        cmpContraseña.setForeground(new java.awt.Color(204, 204, 204));
-        cmpContraseña.setBorder(null);
-        cmpContraseña.setOpaque(false);
-        getContentPane().add(cmpContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 440, 30));
-
         cmpNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         cmpNombre.setForeground(new java.awt.Color(204, 204, 204));
         cmpNombre.setBorder(null);
+        CambioValor a = new CambioValor();
+        cmpNombre.setText(""+a.ultimo_id());
         cmpNombre.setOpaque(false);
         getContentPane().add(cmpNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 228, 440, 30));
 
@@ -103,6 +101,11 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
+
+        cmpContraseña.setOpaque(false);
+        CambioValor a1 = new CambioValor();
+        cmpContraseña.setText(""+a1.ultimoValor_id());
+        getContentPane().add(cmpContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 440, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial", 3, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,12 +152,18 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
     }// </editor-fold>//GEN-END:initComponents
      //se actualiza el usuario actual escrito
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        usuarios userup= new usuarios(llenar_id(),this.cmpNombre.getText(),this.cmpContraseña.getText(),this.cmpPuesto.getText());
-        userup.setIdUsuario(llenar_id());
-        userup.setNombre(this.cmpNombre.getText());
-        userup.setConstraseña(this.cmpContraseña.getText());
-        userup.setPuesto(this.cmpPuesto.getText());
-        userup.actualizar();
+        if (cmpNombre.getText().equals("")||cmpContraseña.getText().equals("")||cmpPuesto.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"No se puede guardar faltan datos", "Verifique",1);
+        }else{
+            int ultimo = Sabervar_id();
+        System.out.println("este es el ultimo"+ultimo);
+        CambioValor cambi = new CambioValor(llenar_id(),Integer.parseInt(this.cmpNombre.getText()),Float.parseFloat(this.cmpContraseña.getText()),Float.parseFloat(this.cmpPuesto.getText()));
+        cambi.setIdUsuario(llenar_id());
+        cambi.setCajon(Integer.parseInt(this.cmpNombre.getText()));
+        cambi.setValorpa(Float.parseFloat(this.cmpContraseña.getText()));
+        cambi.actualizar(ultimo);
+        }
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
                 //eliminamos el usuario escrito
@@ -219,26 +228,26 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(alta_usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioValores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(alta_usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioValores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(alta_usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioValores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(alta_usuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CambioValores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new alta_usuario().setVisible(true);
-     
+                new CambioValores().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField cmpContraseña;
+    private javax.swing.JTextField cmpContraseña;
     private javax.swing.JTextField cmpNombre;
     private javax.swing.JTextField cmpPuesto;
     private javax.swing.JButton jButton1;

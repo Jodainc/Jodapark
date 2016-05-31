@@ -119,7 +119,7 @@ public int llenar_id(){  //añadimos una nueva ID a los parámetros
             System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
             if(pass.equals(passoriginal)){      //tipico ciclo de verificación de contraseña y usuario.
                 //JOptionPane.showMessageDialog(null, "Exito", "sucess",2);
-                new menu().setVisible(true);
+                new CambioValores().setVisible(true);
                 this.dispose();
                 System.out.println("Contraseña original: "+passoriginal+"   contraseña escrita: "+pass);
             }
