@@ -193,24 +193,13 @@ public static Date StringToDate(String fecha,String caracter,int op){
  SimpleDateFormat sdf = new SimpleDateFormat(formato,new Locale("es_ES"));
  Date fechaFormato = null;
         try {
-            sdf.setLenient(true);
+            sdf.setLenient(false);
             fechaFormato=sdf.parse(fecha);
         } catch (ParseException ex) {
             System.out.println("fecha error"+ex.getMessage());
 
         }
 return fechaFormato;
-}
-public  int date(int date1){
-     Calendar re = Calendar.getInstance();
-     int fechaNumero =re.get(Calendar.DATE);
-     if(fechaNumero==31){
-         fechaNumero=29;
-     }else{
-         fechaNumero=date1;
-     }
-     
-return fechaNumero;
 }
 /*
 
