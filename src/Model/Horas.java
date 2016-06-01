@@ -12,6 +12,9 @@ import java.util.Locale;
 public class Horas {
     static  long milisegundos_dia = 24 * 60 * 60 * 1000;
 
+    static void retornaDiferencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     String fechaInicial1;
     String fechaFinal1;
         public Horas(){
@@ -26,19 +29,16 @@ public class Horas {
     }
     
         public long retornaDiferencia(String fechaInicial1,String fechaFinal1){
+            //System.out.println("Fecha Salida"+ fechaFinal1);
+                Date fechaInicial= StringToDate(fechaInicial1, "/", 0);//yyyy-MM-dd
+        Date fechaFinal= StringToDate(fechaFinal1, "/", 0);
  /**Creamos una instancia de la clase calendar*/
-   System.out.println("fecha String"+fechaInicial1);
-            System.out.println("fecha String"+fechaFinal1);
         Calendar calFechaInicial=Calendar.getInstance();
         Calendar calFechaFinal=Calendar.getInstance();
-        Date fechaInicial= StringToDate(fechaInicial1, "/", 1);//yyyy-MM-dd
-        Date fechaFinal= StringToDate(fechaFinal1, "/", 1);
-         System.out.println("fecha"+fechaInicial);
-            System.out.println("fecha"+fechaFinal);
+
  /**Le pasamos el objeto Date al metodo set time*/
         calFechaInicial.setTime(fechaInicial);
         calFechaFinal.setTime(fechaFinal);
-           
         long horas=diferenciaHorasDias(calFechaInicial,
                 calFechaFinal)+diferenciaHoras(calFechaInicial,calFechaFinal);
         long minutos=diferenciaMinutos(calFechaInicial,calFechaFinal);
@@ -46,9 +46,9 @@ public class Horas {
         if(minutos<0){
            horas = horas-1;
            minutos = minutos+60;
-        System.out.println("Horas: "+(horas)+" Minutos: " +(minutos));
+       // System.out.println("Horas: "+(horas)+" Minutos: " +(minutos));
         }else{
-          System.out.println("Horas: "+(horas)+" Minutos : "+minutos);
+         // System.out.println("Horas: "+(horas)+" Minutos : "+minutos);
         }
         long pasarTiempo  = horas*60;
         
@@ -66,8 +66,8 @@ public class Horas {
         calFechaFinal.setTime(fechaFinal);
  //Numero total de minutos que hay entre las dos Fechas
         long totalHoras = cantidadTotalHoras(calFechaInicial,calFechaFinal);
-        System.out.println("Numero Total de Horas" +
-        " Entre las dos Fechas: "+cantidadTotalHoras(calFechaInicial,calFechaFinal));
+   //     System.out.println("Numero Total de Horas" +
+     //   " Entre las dos Fechas: "+cantidadTotalHoras(calFechaInicial,calFechaFinal));
         return totalHoras;
     }
         public long retornaMinutos(String fechaInicial1,String fechaFinal1){
@@ -81,8 +81,8 @@ public class Horas {
         calFechaFinal.setTime(fechaFinal);
  //Numero total de minutos que hay entre las dos Fechas
         long totalminutos = cantidadTotalMinutos(calFechaInicial,calFechaFinal);
-        System.out.println("Numero Total de Minutos" +
-        " Entre las dos Fechas: "+cantidadTotalMinutos(calFechaInicial,calFechaFinal));
+       // System.out.println("Numero Total de Minutos" +
+       // " Entre las dos Fechas: "+cantidadTotalMinutos(calFechaInicial,calFechaFinal));
         return totalminutos;
     }
                 public long retornaSegundos(String fechaInicial1,String fechaFinal1){
@@ -96,8 +96,8 @@ public class Horas {
         calFechaFinal.setTime(fechaFinal);
  //Numero total de minutos que hay entre las dos Fechas
         long totalsegundos = cantidadTotalSegundos(calFechaInicial,calFechaFinal);
-        System.out.println("Numero Total de segundos" +
-        " Entre las dos Fechas: "+cantidadTotalSegundos(calFechaInicial,calFechaFinal));
+       // System.out.println("Numero Total de segundos" +
+       // " Entre las dos Fechas: "+cantidadTotalSegundos(calFechaInicial,calFechaFinal));
         return totalsegundos;
     }
     /*Metodo que calcula la diferencia de las horas que han pasado entre dos fechas en java
@@ -178,6 +178,7 @@ return fechaFormato;
 public static Date StringToDate(String fecha,String caracter,int op){
     String formatoHora=" HH:mm:ss";
      String formato="yyyy"+caracter+"MM"+caracter+"dd"+formatoHora;
+     //System.out.println("formato 0::"+formato);
     if(op==1)
         //
         formato="yyyy"+caracter+"dd"+caracter+"MM"+formatoHora;
@@ -189,15 +190,41 @@ public static Date StringToDate(String fecha,String caracter,int op){
         formato="dd"+caracter+"yyyy"+caracter+"MM"+formatoHora;
       else if(op==5)
         formato="dd"+caracter+"MM"+caracter+"yyyy"+formatoHora;
- SimpleDateFormat sdf = new SimpleDateFormat(formato, Locale.getDefault());
- Date fechaFormato=null;
+ SimpleDateFormat sdf = new SimpleDateFormat(formato,new Locale("es_ES"));
+ Date fechaFormato = null;
         try {
-
-            sdf.setLenient(false);
+            sdf.setLenient(true);
             fechaFormato=sdf.parse(fecha);
         } catch (ParseException ex) {
+            System.out.println("fecha error"+ex.getMessage());
 
         }
 return fechaFormato;
 }
+public  int date(int date1){
+     Calendar re = Calendar.getInstance();
+     int fechaNumero =re.get(Calendar.DATE);
+     if(fechaNumero==31){
+         fechaNumero=29;
+     }else{
+         fechaNumero=date1;
+     }
+     
+return fechaNumero;
+}
+/*
+
+        long horas=diferenciaHorasDias(calFechaInicial,
+                calFechaFinal)+diferenciaHoras(calFechaInicial,calFechaFinal);
+        long minutos=diferenciaMinutos(calFechaInicial,calFechaFinal);
+
+        if(minutos<0)
+        System.out.println("Horas: "+(horas-1)+" Minutos: " +(minutos+60));
+        else
+          System.out.println("Horas: "+(horas)+" Minutos : "+minutos);
+       
+
+     
+*/
+    
 }

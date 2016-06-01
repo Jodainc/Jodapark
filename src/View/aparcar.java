@@ -276,7 +276,7 @@ public class aparcar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private String tiempo() {
-        String tiempo =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH))+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
+        String tiempo =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH)+ 1)+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
         return tiempo;
     }
 

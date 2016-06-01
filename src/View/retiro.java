@@ -228,7 +228,7 @@ int L;
     }
     
     private String fecha(){  
-        String fecha =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH))+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
+        String fecha =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH) + 1)+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
             return fecha;
         
     }
@@ -315,15 +315,14 @@ int L;
           String Salida = fecha();
           System.out.println("Fecha Salida::"+Salida);
             Horas cambio = new Horas();
-            System.out.println("Cambio"+cambio.toString());
-            long diferencia = cambio.retornaDiferencia(llegada, Salida);
-            System.out.println("Fecha Salida::"+diferencia);
+            long diferencia = cambio.retornaDiferencia(llegada,Salida);
+            System.out.println("Diferencia ::"+diferencia);
             long horas = cambio.retornaHoras(llegada, Salida);
-            System.out.println("Fecha Salida::"+horas);
+            System.out.println("Horas ::"+horas);
             long minutos = cambio.retornaMinutos(llegada, Salida);
-            System.out.println("Fecha Salida::"+minutos);
+            System.out.println("Minutos  ::"+minutos);
             long segundos = cambio.retornaSegundos(llegada, Salida);
-            System.out.println("Fecha Salida::"+segundos);
+            System.out.println("Segundos  ::"+segundos);
        System.out.println(diferencia+" "+"    Horas     "+horas+" "+"  minutos   "+minutos+" "+"  Segundos   "+segundos);
        //this.cmpTiempo.setText(""+diferencia);   //pintamos el tiempo en la textfield
        //long valor = (long) 0.24;
