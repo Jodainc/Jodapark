@@ -4,11 +4,16 @@
  */
 package View;
 
+import Model.CambioValor;
+import Model.Clientes;
 import Model.DB;
+import Model.Horas;
+import static View.retiro.Redondear;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import javax.swing.JLabel;
 
 /**
@@ -50,6 +55,8 @@ public class data extends javax.swing.JFrame {
         ET_Placa = new javax.swing.JLabel();
         ET_Propietario = new javax.swing.JLabel();
         ET_Vehiculo = new javax.swing.JLabel();
+        ET_Valor = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,18 +77,18 @@ public class data extends javax.swing.JFrame {
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Placa:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 64, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Propietario");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 106, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Vehículo:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 154, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/animacion.gif"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, 76));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, 76));
 
         ET_Placa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Placa.setForeground(new java.awt.Color(0, 255, 0));
@@ -91,17 +98,27 @@ public class data extends javax.swing.JFrame {
                 ET_PlacaMouseEntered(evt);
             }
         });
-        getContentPane().add(ET_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, 140, -1));
+        getContentPane().add(ET_Placa, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 170, 20));
 
         ET_Propietario.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Propietario.setForeground(new java.awt.Color(102, 255, 0));
         ET_Propietario.setText("DUEÑO");
-        getContentPane().add(ET_Propietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 130, -1));
+        getContentPane().add(ET_Propietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 130, -1));
 
         ET_Vehiculo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ET_Vehiculo.setForeground(new java.awt.Color(102, 255, 0));
         ET_Vehiculo.setText("CARRO");
-        getContentPane().add(ET_Vehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 20));
+        getContentPane().add(ET_Vehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 150, 20));
+
+        ET_Valor.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
+        ET_Valor.setForeground(new java.awt.Color(240, 244, 245));
+        ET_Valor.setText("Valor:");
+        getContentPane().add(ET_Valor, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("DejaVu Sans", 0, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 25, 0));
+        jLabel8.setText("Valor");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 150, 30));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/backgrounds/fondo_data.jpg"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 240, 270));
@@ -152,10 +169,40 @@ public class data extends javax.swing.JFrame {
             System.err.println("Ocurrió un error: "+ex.getMessage().toString());
         }
     }
+    Calendar re=Calendar.getInstance();
+        private String fecha(){  
+        String fecha =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH) + 1)+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR_OF_DAY))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
+            return fecha;
+        
+    }
+    public void actualizar_valor(int Cajon_Numero){  //actualiamos los datos que vamos a mostrar dependiendo el cajón
+        try{
+          Clientes client= new Clientes(Cajon_Numero);        
+          String llegada= client.getLlegada();
+            System.out.println("Fecha llegada::"+llegada);
+          String Salida = fecha();
+          System.out.println("Fecha Salida::"+Salida);
+            Horas cambio = new Horas();
+            long diferencia = cambio.retornaDiferencia(llegada,Salida);
+            long horas = cambio.retornaHoras(llegada, Salida);
+            long minutos = cambio.retornaMinutos(llegada, Salida);
+            long segundos = cambio.retornaSegundos(llegada, Salida);
+            CambioValor vtar  = new CambioValor(client.getTipove());
+            int vpo = vtar.getValorpa();
+            double valor = (double) vpo/1440;
+            double resultado = diferencia*valor;
+            resultado = Redondear(resultado, 1);
+            this.jLabel8.setText(""+resultado); //y el pago. diciéndole que solo ocupamos 2 cifras después del punto decimal.
+       }
+       catch(Exception ex){
+           System.out.println("error"+ ex.getMessage());
+       }
+    }
       public void update(){  //actualiamos los datos que vamos a mostrar dependiendo el cajón
                                       this.ET_Placa.setText( "Placa    ");
                     this.ET_Propietario.setText("Propietario    ");
                   this.ET_Vehiculo.setText("Vehiculo     ");
+                  this.ET_Valor.setText("VALOR");
     }
     /**
      * @param args the command line arguments
@@ -179,6 +226,7 @@ public class data extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel ET_Placa;
     public javax.swing.JLabel ET_Propietario;
+    private javax.swing.JLabel ET_Valor;
     public javax.swing.JLabel ET_Vehiculo;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel2;
@@ -186,5 +234,6 @@ public class data extends javax.swing.JFrame {
     public javax.swing.JLabel jLabel4;
     public javax.swing.JLabel jLabel5;
     public javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     // End of variables declaration//GEN-END:variables
 }

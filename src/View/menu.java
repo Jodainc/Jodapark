@@ -106,6 +106,11 @@ public class menu extends javax.swing.JFrame {
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 192, 83));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/bValores.png"))); // NOI18N
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 226, 83));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/logo_chico.png"))); // NOI18N
@@ -199,6 +204,13 @@ public class menu extends javax.swing.JFrame {
          System.exit(0);
          
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+                new Update_vpr().setVisible(true);
+        this.dispose();
+        this.reproductor.stop();
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments

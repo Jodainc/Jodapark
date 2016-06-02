@@ -7,8 +7,14 @@ package View;
 import Model.Cajones;
 import Model.Datos;
 import Model.Clientes;
+import Model.ClientesView;
+import Model.DB;
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -24,12 +30,12 @@ public class aparcar extends javax.swing.JFrame {
     boolean f = true;
     private Reloj.Hora hora;
     Calendar re = Calendar.getInstance();
-         int claseAut=0;
+         int claseAut=1;
     public aparcar() {
         this.setUndecorated(true);
         this.setLocation(400, 50);
         initComponents();
-        L = 0;
+        L = 1;
         this.combocajon.setModel(modelo);
         hora = new Reloj.Hora();
         hora.setForeground(Color.red);
@@ -38,7 +44,7 @@ public class aparcar extends javax.swing.JFrame {
         this.panel.add(hora);
         while (L < 12) {
             Cajones cajon = new Cajones(L);
-            if (cajon.ConsultaCajon(L) != L && cajon.getEstado() == 0) {
+            if (cajon.ConsultaCajon(L) != L || cajon.getEstado() == 0) {
                 Object caj = L;
                 modelo.addElement(caj);
                 L++;
@@ -58,6 +64,7 @@ public class aparcar extends javax.swing.JFrame {
 
         jLabel9 = new javax.swing.JLabel();
         claseAuto = new javax.swing.JSlider();
+        cmpPlaca = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -79,7 +86,6 @@ public class aparcar extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        cmpPlaca = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -104,6 +110,19 @@ public class aparcar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(claseAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 390, 60));
+
+        cmpPlaca.setBorder(null);
+        cmpPlaca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmpPlacaActionPerformed(evt);
+            }
+        });
+        cmpPlaca.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                cmpPlacaKeyReleased(evt);
+            }
+        });
+        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, 25));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/flat/babumenu.png"))); // NOI18N
@@ -258,15 +277,6 @@ public class aparcar extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -40, 460, 700));
 
-        cmpPlaca.setBorder(null);
-        cmpPlaca.setOpaque(false);
-        cmpPlaca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmpPlacaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmpPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 120, 25));
-
         jButton4.setText("jButton4");
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
@@ -276,7 +286,7 @@ public class aparcar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private String tiempo() {
-        String tiempo =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH)+ 1)+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
+        String tiempo =""+ Integer.toString(re.get(Calendar.YEAR))+"/"+Integer.toString(re.get(Calendar.MONTH)+ 1)+"/"+Integer.toString(re.get(Calendar.DATE))+" "+Integer.toString(re.get(Calendar.HOUR_OF_DAY))+":"+Integer.toString(re.get((Calendar.MINUTE)))+":"+Integer.toString(re.get((Calendar.SECOND)));
         return tiempo;
     }
 
@@ -295,6 +305,7 @@ public class aparcar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "No se puede continuar"+ claseAut);
         }else{
                     Clientes cliente= new Clientes(Placa.toString(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),Integer.parseInt(this.combocajon.getSelectedItem().toString()),tiempo(),this.cmp_observacion.getText(),claseAut);  
+                    System.out.println("");
                     Cajones cajon1= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()),0,claseAut);
                     Cajones cajoncons= new Cajones(Integer.parseInt(this.combocajon.getSelectedItem().toString()));
                     if(this.cmpLetters.getText().length()==0 || this.cmpCliente.getText().length()==0 || this.cmpMarca_modelo.getText().length()==0 || this.cmp_observacion.getText().length()==0 || this.cmpCorreo.getText().length()==0  ){
@@ -303,6 +314,10 @@ public class aparcar extends javax.swing.JFrame {
                     if(cajoncons.ConsultaCajon(Integer.parseInt(this.combocajon.getSelectedItem().toString()))==0){
                     cajon1.Guardar();
                     cliente.Guardar();
+                    ClientesView vistacleintes = new ClientesView(Placa.toString(),this.cmpCliente.getText(),this.cmpCorreo.getText(), this.cmpMarca_modelo.getText(),tiempo(),this.cmp_observacion.getText());
+                    if(!vistacleintes.insertarTabla(Placa.toString())){
+                        vistacleintes.Guardar();
+                    }
                     }
                     }
         }
@@ -328,13 +343,7 @@ public class aparcar extends javax.swing.JFrame {
         // TODO add your handling code here:
                         Datos datoscli = new Datos();
      claseAut = (int)claseAuto.getValue();
-       switch(claseAut){ case 0:
-                cmpLetters.setText("");
-                cpmNumbers.setText("");
-                datoscli.isCaden(cmpLetters, 2);
-                datoscli.isProbar(cpmNumbers, 2);
-                break;
-           
+       switch(claseAut){ 
             case 1:
                 cmpLetters.setText("");
                 cpmNumbers.setText("");
@@ -388,6 +397,40 @@ public class aparcar extends javax.swing.JFrame {
         // TODO add your handling code here
       
     }//GEN-LAST:event_cmpLettersMouseClicked
+
+    private void cmpPlacaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cmpPlacaKeyReleased
+        // TODO add your handling code here:
+        String letras= this.cmpPlaca.getText();
+         DB cc= new DB();
+        Connection conect= cc.GetConnection();
+            try {
+                PreparedStatement ps = conect.prepareStatement("SELECT Placa,Nombre,Celular,Marca_modelo,Llegada from cliview where Placa like'%"+letras+"%'");
+                ResultSet rs = ps.executeQuery();
+                    while(rs.next()){
+                        String Placa=rs.getString("Placa");
+                        //System.out.println("Placa::"+Placa);
+                        String Nombre=rs.getString("Nombre");
+                        String Celular=rs.getString("Celular");
+                        String Marca_modelo= rs.getString("Marca_modelo");
+                        //int Cajon_Numero= rs.getInt("Cajon_Numero");
+                        //Object fila []= { Nombre,Placa,Marca_modelo,Cajon_Numero};
+                         if(letras.length()>5){
+                        this.cmpCliente.setText(Nombre);
+                        this.cmpCorreo.setText(Celular);
+                        this.cmpMarca_modelo.setText(Marca_modelo);
+                    }else
+                         {
+                             this.cmpCliente.setText("          ");
+                        this.cmpCorreo.setText("          ");
+                        this.cmpMarca_modelo.setText("          "); 
+                         }
+                    }
+                   
+                
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"error: "+ex,"ERROR",1);
+            }
+    }//GEN-LAST:event_cmpPlacaKeyReleased
 
     /**
      * @param args the command line arguments

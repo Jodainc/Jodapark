@@ -1,4 +1,5 @@
 package Model;
+import static Model.Clientes.conexion;
 import static Model.usuarios.conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -210,15 +211,27 @@ public class Cajones {
             return false;
         }
     }
-    
+         public  void eliminar(){  //elimina el cliente actual en constructor
+        conexion = base.GetConnection();
+        try{
+            PreparedStatement borrar = conexion.prepareStatement("DELETE  from cajon where Numero='"+this.Numero+"'" );
+         
+            borrar.executeUpdate();
+         //  JOptionPane.showMessageDialog(null,"borrado");
+        }catch(SQLException ex){
+            System.err.println("Ocurrió un error al borrar: "+ex.getMessage());
+          
+        }
+     }
          public boolean actualizar2(){
         conexion=base.GetConnection();
         if(conexion!=null){
         try{
-            String peticion= "update cajon set Numero=?,Estado=?  where Numero='";
+            String peticion= "update cajon set Numero=?,Estado=?,TipoVehiculo=?  where Numero='";
             PreparedStatement actualizar= conexion.prepareStatement(peticion+this.Numero+"'");
             actualizar.setInt(1,this.Numero);
-            actualizar.setInt(2,1);
+            actualizar.setInt(2,0);
+            actualizar.setInt(3, this.TipoVe);
             actualizar.executeUpdate();
             conexion.close();
            // JOptionPane.showMessageDialog(null,"Registro Actualizado","Éxito al actualizar",1);

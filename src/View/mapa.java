@@ -520,12 +520,13 @@ public class mapa extends javax.swing.JFrame {
     //el secreto está en que cuando hacen focus al área del cajón mandamos a llamar la ventana que nos muestra
     // datos y además hacemos visible el boton para retirar.
     private void carro_1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_1MouseEntered
-/*
+ info.actualizar_valor(1);
             info.actualizar_datos(1);
         info.setVisible(true); 
         info.setLayout(null);
-        info.setBounds(259, 400, 220,240);
-  */
+        info.setBounds(620, 100, 220,240);
+         //info.setBounds(510, 100, 220,240);
+          //info.setBounds(410, 100, 220,240);
         this.boton_retirada1.setVisible(true);
     }//GEN-LAST:event_carro_1MouseEntered
 
@@ -539,10 +540,11 @@ public class mapa extends javax.swing.JFrame {
               this.boton_retirada2.setVisible(true);        
         System.out.println("esta en el"+2);
                         info.update();
+         info.actualizar_valor(2);
         info.actualizar_datos(2);
         info.setVisible(true); 
         info.setLayout(null);
-        info.setBounds(259, 300, 220,240);
+        info.setBounds(510, 100, 220,240);
               this.boton_retirada2.setVisible(true);
 
     }//GEN-LAST:event_carro_2MouseEntered
@@ -553,11 +555,11 @@ public class mapa extends javax.swing.JFrame {
     }//GEN-LAST:event_carro_2MouseExited
 
     private void carro_3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_3MouseEntered
-
+         info.actualizar_valor(3);
         info.actualizar_datos(3);
         info.setVisible(true); 
         info.setLayout(null);
-        info.setBounds(259, 150, 220,240);
+        info.setBounds(410, 100, 220,240);
        this.boton_retirada3.setVisible(true);
     }//GEN-LAST:event_carro_3MouseEntered
 
@@ -568,6 +570,7 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_4MouseEntered
         info.update();
+         info.actualizar_valor(4);
         info.actualizar_datos(4);
         info.setVisible(true); 
         info.setLayout(null);
@@ -582,6 +585,7 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_5MouseEntered
         info.update();
+         info.actualizar_valor(5);
         info.actualizar_datos(5);
         info.setVisible(true); 
         info.setLayout(null);
@@ -596,6 +600,7 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_6MouseEntered
         info.update();
+         info.actualizar_valor(6);
         info.actualizar_datos(6);
         info.setVisible(true); 
         info.setLayout(null);
@@ -610,6 +615,7 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_7MouseEntered
         info.update();
+         info.actualizar_valor(7);
         info.actualizar_datos(7);
         info.setVisible(true); 
         info.setLayout(null);
@@ -624,7 +630,8 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_8MouseEntered
                 info.update();
-        info.actualizar_datos(8);
+         info.actualizar_valor(8);
+                info.actualizar_datos(8);
         info.setVisible(true); 
         info.setLayout(null);
         info.setBounds(350, 200, 220,240);
@@ -638,6 +645,7 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_9MouseEntered
         info.update();
+         info.actualizar_valor(9);
         info.actualizar_datos(9);
         info.setVisible(true); 
         info.setLayout(null);
@@ -652,7 +660,8 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_10MouseEntered
                // info.update();
-            info.actualizar_datos(10);
+             info.actualizar_valor(10);
+               info.actualizar_datos(10);
         info.setVisible(true); 
         info.setLayout(null);
              //info.setBounds(350, 100, 220,240);
@@ -667,7 +676,8 @@ public class mapa extends javax.swing.JFrame {
 
     private void carro_11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carro_11MouseEntered
                 info.update();
-        info.actualizar_datos(11);
+         info.actualizar_valor(11);
+                info.actualizar_datos(11);
         info.setVisible(true); 
         info.setLayout(null);
         info.setBounds(630, 410, 220,240);
